@@ -1,0 +1,20 @@
+.container
+    .well
+        form.form-horizontal(name="profileForm")
+            fieldset
+                legend Sign Up Form
+                .form-group
+                    label.col-md-2.control-label(for="first-name") First name
+                    .col-md-10
+                        input#first-name.form-control(type="text", placeholder="First name", ng-model="user.firstName", required)
+                .form-group
+                    label.col-md-2.control-label(for="last-name") Last name
+                    .col-md-10
+                        input#last-name.form-control(type="text", placeholder="Last name", ng-model="user.lastName", required)
+                .form-group
+                    label.col-md-2.control-label(for="password") Password
+                    .col-md-10
+                        input#password.form-control(type="password", placeholder="Password", ng-model="user.password")
+                .pull-right
+                    button.btn.btn-primary(ng-click="update(user)", ng-disabled="profileForm.$invalid") Update
+                    a.btn.btn-primary(href="/") Cancel

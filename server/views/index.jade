@@ -1,0 +1,22 @@
+extends includes/layout
+block main-content
+    header.nav.navbar-default.navbar-fixed-top
+        .container
+            .navbar-header
+                button.navbar-toggle(type="button", data-toggle="collapse",data-target="#navbar-main")
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href="/") YourFood
+            #navbar-main.navbar-collapse.collapse
+                ul.nav.navbar-nav
+                    li
+                        a(href="/") Home
+                div(ng-include="'/partials/account/login'")
+
+    section
+        div(ng-view)
+
+    footer
+        p.text-center
+            | YourFood &copy; 2014 Hackathon
