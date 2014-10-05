@@ -1,4 +1,4 @@
-app.factory('auth', function($q, $http, identity, UsersResource){
+app.factory('auth', function ($q, $http, identity, UsersResource) {
 
     return {
         signup: function (user) {
@@ -30,11 +30,11 @@ app.factory('auth', function($q, $http, identity, UsersResource){
 
             return deferred.promise;
         },
-        login: function(user){
+        login: function (user) {
             var deferred = $q.defer();
 
-            $http.post('/login', user).success(function(response){
-                if (response.success){
+            $http.post('/login', user).success(function (response) {
+                if (response.success) {
                     var user = new UsersResource();
                     angular.extend(user, response.user);
                     identity.setCurrentUser(user);
@@ -51,15 +51,15 @@ app.factory('auth', function($q, $http, identity, UsersResource){
         logout: function () {
             var deferred = $q.defer();
 
-            $http.post('/logout').success(function(){
-                identity.currentUser = undefined;
+            $http.post('/logout').success(function () {
+                identity.setCurrentUser(undefined);
                 deferred.resolve(true);
             });
 
             return deferred.promise;
         },
         isAuthenticated: function () {
-            if (identity.isAuthenticated()){
+            if (identity.isAuthenticated()) {
                 return true;
             }
             else {
@@ -67,7 +67,7 @@ app.factory('auth', function($q, $http, identity, UsersResource){
             }
         },
         isAuthorizedForRole: function (role) {
-            if  (identity.isAuthorizedForRole(role)){
+            if (identity.isAuthorizedForRole(role)) {
                 return true;
             }
             else {

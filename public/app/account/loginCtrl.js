@@ -7,6 +7,7 @@ app.controller('LoginCtrl',
         $scope.login = function (user) {
             auth.login(user).then(function (success) {
                 if (success) {
+                    $scope.user = identity.currentUser();
                     notifier.success('Successful login!');
                 }
                 else {

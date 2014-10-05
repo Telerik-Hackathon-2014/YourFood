@@ -22,10 +22,14 @@ app.factory('identity', function($cookieStore, UsersResource){
             currentUser = user;
         },
         isAuthenticated: function(){
-            return !!this.currentUser;
+            return !!this.currentUser();
         },
         isAuthorizedForRole: function (role) {
-            return !!this.currentUser && this.currentUser.roles.indexOf(role) > -1;
+            return !!this.currentUser() && this.currentUser().roles.indexOf(role) > -1;
+        },
+        isAdmin: function () {
+            // Ask if better to be called from usersResource.js
+            return this.isAuthorizedForRole('admin');
         }
     }
 });
