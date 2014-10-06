@@ -1,20 +1,23 @@
 var mongoose = require('mongoose'),
     encryption = require('../utilities/encryption'),
     ShoppingList = mongoose.model('ShoppingList'),
-    ProductSchema = mongoose.model('Product');
+    ShoppingListSchema = mongoose.model('ShoppingList').schema,
+    Product = mongoose.model('Product'),
+    ProductSchema = mongoose.model('Product').schema,
+    Category = mongoose.model('Category');
 
 var userSchema = mongoose.Schema({
     username: { type: String, required: true, unique: true},
     firstName: { type: String, required: true, unique: true},
     lastName: { type: String, required: true, unique: true},
-    email: String,
+    email: { type: String, required: true, unique: true },
     address: String,
     salt: String,
     hashPass: String,
     roles: [String],
-    availableProducts: [productSchema],
-    shoppingListsHistory: [shoppilgListSchema],
-    productsHistory: [productSchema]
+    availableProducts: [ProductSchema],
+    shoppingListsHistory: [ShoppingListSchema],
+    productsHistory: [ProductSchema]
 });
 
 userSchema.method({
@@ -61,8 +64,10 @@ module.exports.seedInitialUsers = function () {
             User.create({username: 'flextry', firstName: 'Martin', lastName: 'Nikolov', salt: salt, hashPass: hashedPwd, roles: ['admin']});
             console.log('users added to database');
 
+
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt, 'user');
+
             User.create({
                 username: 'user',
                 firstName: 'User',
@@ -71,7 +76,38 @@ module.exports.seedInitialUsers = function () {
                 salt: salt,
                 hashPass: hashedPwd,
                 roles: ['admin'],
-                availableProducts: []
+                availableProducts: [
+                    new Product({
+                        name: 'Banana',
+                        category: new Category({name: 'Fruits'}),
+                        quantity: 5,
+                        expirationDate: new Date(),
+                        purchaseDate: new Date()
+                    }),
+                    new Product({
+                        name: 'Apple',
+                        category: new Category({name: 'Fruits'}),
+                        quantity: 7,
+                        expirationDate: new Date(),
+                        purchaseDate: new Date()
+                    }),
+                    new Product({
+                        name: 'Passion Fruit',
+                        category: new Category({name: 'Fruits'}),
+                        quantity: 2,
+                        expirationDate: new Date(),
+                        purchaseDate: new Date()
+                    }),
+                    new Product({
+                        name: 'Potato',
+                        category: new Category({name: 'Vegetables'}),
+                        quantity: 2,
+                        expirationDate: new Date(),
+                        purchaseDate: new Date()
+                    })
+                ],
+                shoppingListsHistory: [],
+                productsHistory: []
             });
         }
     });
