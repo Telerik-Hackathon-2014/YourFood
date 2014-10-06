@@ -18,14 +18,9 @@ module.exports.seedInitialLists = function () {
             console.log('Cannot find users ' + err);
         }
 
-//        var product =  new Product({name: 'Tomato', category: 'fruit', expirationDate: new Date(2014, 12, 12)});
-//        ShoppingList.create({products:[product]});
-
         if (collection.length === 0) {
-            Product.find({}).exec(function (err, collection) {
-
-                console.log('Lists added....');
-            });
+            ShoppingList.create({name: 'Apple', expirationDate: new Date(2014, 12, 12)});
+            console.log('Lists added....');
         }
     });
 };

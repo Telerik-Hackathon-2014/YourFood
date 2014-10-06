@@ -1,13 +1,20 @@
 var mongoose = require('mongoose'),
-    encryption = require('../utilities/encryption');
+    encryption = require('../utilities/encryption'),
+    ShoppingList = mongoose.model('ShoppingList'),
+    ProductSchema = mongoose.model('Product');
 
 var userSchema = mongoose.Schema({
     username: { type: String, required: true, unique: true},
     firstName: { type: String, required: true, unique: true},
     lastName: { type: String, required: true, unique: true},
+    email: String,
+    address: String,
     salt: String,
     hashPass: String,
-    roles: [String]
+    roles: [String],
+    availableProducts: [productSchema],
+    shoppingListsHistory: [shoppilgListSchema],
+    productsHistory: [productSchema]
 });
 
 userSchema.method({
@@ -22,7 +29,6 @@ userSchema.method({
 });
 
 var User = mongoose.model('User', userSchema);
-
 
 module.exports.seedInitialUsers = function () {
     User.find({}).exec(function(err, collection){
@@ -54,6 +60,19 @@ module.exports.seedInitialUsers = function () {
             hashedPwd = encryption.generateHashedPassword(salt, 'flextry');
             User.create({username: 'flextry', firstName: 'Martin', lastName: 'Nikolov', salt: salt, hashPass: hashedPwd, roles: ['admin']});
             console.log('users added to database');
+
+            salt = encryption.generateSalt();
+            hashedPwd = encryption.generateHashedPassword(salt, 'user');
+            User.create({
+                username: 'user',
+                firstName: 'User',
+                lastName: 'Userov',
+                email: 'user@user.com',
+                salt: salt,
+                hashPass: hashedPwd,
+                roles: ['admin'],
+                availableProducts: []
+            });
         }
     });
 };
