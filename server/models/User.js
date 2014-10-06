@@ -15,9 +15,9 @@ var userSchema = mongoose.Schema({
     salt: String,
     hashPass: String,
     roles: [String],
-    availableProducts: [ProductSchema],
-    shoppingListsHistory: [ShoppingListSchema],
-    productsHistory: [ProductSchema]
+    availableProducts: [mongoose.Schema.Types.ObjectId],
+    shoppingListsHistory: [mongoose.Schema.Types.ObjectId],
+    productsHistory: [mongoose.Schema.Types.ObjectId]
 });
 
 userSchema.method({
@@ -76,36 +76,7 @@ module.exports.seedInitialUsers = function () {
                 salt: salt,
                 hashPass: hashedPwd,
                 roles: ['admin'],
-                availableProducts: [
-                    new Product({
-                        name: 'Banana',
-                        category: new Category({name: 'Fruits'}),
-                        quantity: 5,
-                        expirationDate: new Date(),
-                        purchaseDate: new Date()
-                    }),
-                    new Product({
-                        name: 'Apple',
-                        category: new Category({name: 'Fruits'}),
-                        quantity: 7,
-                        expirationDate: new Date(),
-                        purchaseDate: new Date()
-                    }),
-                    new Product({
-                        name: 'Passion Fruit',
-                        category: new Category({name: 'Fruits'}),
-                        quantity: 2,
-                        expirationDate: new Date(),
-                        purchaseDate: new Date()
-                    }),
-                    new Product({
-                        name: 'Potato',
-                        category: new Category({name: 'Vegetables'}),
-                        quantity: 2,
-                        expirationDate: new Date(),
-                        purchaseDate: new Date()
-                    })
-                ],
+                availableProducts: [],
                 shoppingListsHistory: [],
                 productsHistory: []
             });
