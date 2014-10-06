@@ -21,8 +21,8 @@ var userSchema = mongoose.Schema({
 });
 
 userSchema.method({
-    authenticate: function(password){
-        if (encryption.generateHashedPassword(this.salt, password) === this.hashPass){
+    authenticate: function (password) {
+        if (encryption.generateHashedPassword(this.salt, password) === this.hashPass) {
             return true;
         }
         else {
@@ -34,12 +34,12 @@ userSchema.method({
 var User = mongoose.model('User', userSchema);
 
 module.exports.seedInitialUsers = function () {
-    User.find({}).exec(function(err, collection){
-        if (err){
+    User.find({}).exec(function (err, collection) {
+        if (err) {
             console.log('Cannot find users ' + err);
         }
 
-        if (collection.length === 0 ){
+        if (collection.length === 0) {
             var salt,
                 hashedPwd;
 
