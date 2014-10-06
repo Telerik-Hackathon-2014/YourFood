@@ -1,0 +1,26 @@
+{
+  "name": "YourFood",
+  "version": "0.0.0",
+  "homepage": "https://github.com/Telerik-Hackathon-2014/YourFood",
+  "authors": [
+    "TeamHackathon"
+  ],
+  "main": "server.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "./client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angular": "~1.2.26",
+    "angular-route": "~1.2.26",
+    "angular-resource": "~1.2.26",
+    "angular-cookies": "~1.2.26",
+    "toastr": "~2.0.3",
+    "bootstrap": "~3.2.0"
+  }
+}
