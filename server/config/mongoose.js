@@ -1,12 +1,12 @@
 var mongoose = require('mongoose'),
-    user = require('../models/User');
+    models = require('../models');
 
-module.exports = function(config){
+module.exports = function (config) {
     mongoose.connect(config.db);
 
     var db = mongoose.connection;
 
-    db.once('open', function(err){
+    db.once('open', function (err) {
         if (err) {
             return;
         }
@@ -14,9 +14,15 @@ module.exports = function(config){
         console.log('Database up and running');
     });
 
-    db.on('error', function(err){
+    db.on('error', function (err) {
         console.log('db error! ' + err);
     });
 
-    user.seedInitialUsers();
+    models.user.seedInitialUsers();
+    models.category.seedInitialCategories();
+    models.product.seedInitialProducts();
+    models.recipe.seedInitialRecipes();
+    models.recipeCategory.seedInitialRecipeCategories();
+    models.productRecipe.seedInitialProductRecipes();
+    models.shoppingList.seedInitialLists();
 };
