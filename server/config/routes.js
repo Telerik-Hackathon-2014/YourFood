@@ -9,6 +9,8 @@ module.exports = function(app){
 
     app.put('/api/users', auth.isAuthenticated, controllers.users.updateUser);
 
+    app.get('/api/products', controllers.products.getAllProducts);
+
     app.get('/partials/:partialDir/:partialName', function(req, res){
         res.render('../../public/app/' + req.params.partialDir + '/' + req.params.partialName);
     });
@@ -16,6 +18,7 @@ module.exports = function(app){
     app.post('/login', auth.login);
 
     app.post('/logout', auth.logout);
+
     
     app.get('/api/*', function (req, res) {
         res.status(404);

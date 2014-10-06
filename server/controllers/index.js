@@ -1,5 +1,7 @@
-var usersController = require('../controllers/usersController');
+var usersController = require('../controllers/usersController'),
+    productsController = require('../controllers/productsController');
 
 module.exports = {
-    users: usersController
+    users: usersController,
+    products: productsController
 };
