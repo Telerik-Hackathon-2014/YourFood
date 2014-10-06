@@ -20,6 +20,7 @@ module.exports = function (config) {
 
     models.user.seedInitialUsers();
     models.category.seedInitialCategories();
+    models.catalogProduct.seedInitialCatalogProducts();
     models.product.seedInitialProducts();
     models.recipe.seedInitialRecipes();
     models.recipeCategory.seedInitialRecipeCategories();
