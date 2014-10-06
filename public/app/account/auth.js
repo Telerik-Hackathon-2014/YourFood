@@ -4,12 +4,10 @@ app.factory('auth', function ($q, $http, identity, UsersResource) {
         signup: function (user) {
             var deferred = $q.defer();
 
-            var currentUser = new UsersResource(user);
-            user.$save().then(function () {
-                identity.setCurrentUser(currentUser);
+            $http.post('/api/users', user).success(function (response) {
                 deferred.resolve(true);
-            }, function (response) {
-                deferred.reject(response.err);
+            }, function (err) {
+                deferred.reject(err.err);
             });
 
             return deferred.promise;
