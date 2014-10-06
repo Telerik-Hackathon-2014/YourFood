@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     encryption = require('../utilities/encryption'),
-    ShoppingList = mongoose.model('ShoppingList'),
-    ProductSchema = mongoose.model('Product');
+    ShoppingListSchema = mongoose.model('ShoppingList').schema,
+    ProductSchema = mongoose.model('Product').schema;
 
 var userSchema = mongoose.Schema({
     username: { type: String, required: true, unique: true},
@@ -12,14 +12,14 @@ var userSchema = mongoose.Schema({
     salt: String,
     hashPass: String,
     roles: [String],
-    availableProducts: [productSchema],
-    shoppingListsHistory: [shoppilgListSchema],
-    productsHistory: [productSchema]
+    availableProducts: [ProductSchema],
+    shoppingListsHistory: [ShoppingListSchema],
+    productsHistory: [ProductSchema]
 });
 
 userSchema.method({
-    authenticate: function(password){
-        if (encryption.generateHashedPassword(this.salt, password) === this.hashPass){
+    authenticate: function (password) {
+        if (encryption.generateHashedPassword(this.salt, password) === this.hashPass) {
             return true;
         }
         else {
@@ -31,12 +31,12 @@ userSchema.method({
 var User = mongoose.model('User', userSchema);
 
 module.exports.seedInitialUsers = function () {
-    User.find({}).exec(function(err, collection){
-        if (err){
+    User.find({}).exec(function (err, collection) {
+        if (err) {
             console.log('Cannot find users ' + err);
         }
 
-        if (collection.length === 0 ){
+        if (collection.length === 0) {
             var salt,
                 hashedPwd;
 
