@@ -1,5 +1,7 @@
 var mongoose = require('mongoose'),
-    user = require('../models/User');
+    user = require('../models/User'),
+    product = require('../models/Product'),
+    shoppingList = require('../models/ShoppingList');
 
 module.exports = function(config){
     mongoose.connect(config.db);
@@ -19,4 +21,6 @@ module.exports = function(config){
     });
 
     user.seedInitialUsers();
+    product.seedInitialProducts();
+    shoppingList.seedInitialLists();
 };
