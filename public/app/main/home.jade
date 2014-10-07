@@ -1,11 +1,15 @@
 .container
-    .jumbotron
-        h1
-            | YourFood Hackathon
-        h2
-            | Work in progess... expect more
     .row
         .col-lg-12
             .panel.panel-success
                 .panel-heading.text-center
-                    | Content
+                    h1
+                        | YourFood Hackathon
+                    div(ng-controller="MainCtrl")
+                        div(style="height: 700px")
+                            carousel(interval="interval")
+                                slide(ng-repeat="product in products", active="product.active")
+                                    img(ng-src="{{product.image}}", style="margin:auto;")
+                                    div(class="carousel-caption")
+                                        h4 {{ product.name }}
+                                        h6 {{product.category}}
