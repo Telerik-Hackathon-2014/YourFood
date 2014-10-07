@@ -14,10 +14,10 @@
                 .form-group
                     label.col-md-2.control-label(for="email") Email
                     .col-md-10
-                        input#last-name.form-control(type="text", placeholder="Email", ng-model="user.email", required)
+                        input#last-name.form-control(type="email", placeholder="Email", ng-model="user.email", required)
                 .pull-right
-                    button.btn.btn-primary(ng-click="updateInformation(user)", ng-disabled="profileForm.$invalid") Update
-                    a.btn.btn-primary(href="/") Cancel
+                    button.btn.btn-primary(ng-click="updateInformation(user)", ng-disabled="profileForm.$pristine || profileForm.$invalid") Update
+                    a.btn.btn-primary(href="#/") Cancel
 
         form.form-horizontal(name="passwordForm")
             fieldset
@@ -25,12 +25,12 @@
                 .form-group
                     label.col-md-2.control-label(for="password") Password
                     .col-md-10
-                        input#password.form-control(type="password", placeholder="Password", ng-model="password.password")
+                        input#password.form-control(type="password", placeholder="Password", ng-model="newPassword.password")
                 .form-group
-                    label.col-md-2.control-label(for="confimrPassword") Password
+                    label.col-md-2.control-label(for="confirmPassword") Confirm Password
                     .col-md-10
-                        input#password.form-control(type="confimrPassword", placeholder="Confirm Password", ng-model="password.confirmPassword")
+                        input#confirmPassword.form-control(type="password", placeholder="Confirm Password", ng-model="newPassword.confirmPassword")
 
                 .pull-right
-                    button.btn.btn-primary(ng-click="updatePassword(password)", ng-disabled="passwordForm.$invalid") Update Password
-                    a.btn.btn-primary(href="/") Cancel
+                    button.btn.btn-primary(ng-click="updatePassword(newPassword)", ng-disabled="profileForm.$pristine || passwordForm.$invalid") Update Password
+                    a.btn.btn-primary(href="#/") Cancel

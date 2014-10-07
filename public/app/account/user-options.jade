@@ -1,0 +1,17 @@
+ul.nav.navbar-nav.navbar-right(ng-controller="LoginCtrl", ng-hide="identity.isAuthenticated()")
+    li
+        a(href="#/login") Login
+    li
+        a(href="#/signup") Sign Up
+ul.nav.navbar-nav.navbar-right(ng-controller="LoginCtrl", ng-show="identity.isAuthenticated()")
+    li.dropdown
+        a.dropdown-toggle(href="", data-toggle="dropdown")
+            | {{ identity.currentUser().firstName + " " + identity.currentUser().lastName }}
+            span.caret
+        ul.dropdown-menu
+            li(ng-show="identity.isAdmin()")
+                a(href="#/admin/users") Users
+            li(ng-show="identity.isAuthenticated()")
+                a(href="#/profile") Profile
+            li
+                a(href="#", ng-click="logout()") Sign out

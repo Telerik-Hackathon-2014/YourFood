@@ -25,9 +25,12 @@ module.exports = {
     },
     updateUserInformation: function(req, res, next){
 
+        console.log(req.body._id);
+
         if (req.user._id == req.body._id){
 
             var updatedUserData = req.body;
+
             if (updatedUserData.password){
                 updatedUserData.salt = encryption.generateSalt();
                 updatedUserData.hashPass = encryption.generateHashedPassword(updatedUserData.salt, updatedUserData.password);
@@ -47,6 +50,7 @@ module.exports = {
             })
         }
         else {
+            console.log();
             res.send({reason: 'Because!!'});
         }
     },

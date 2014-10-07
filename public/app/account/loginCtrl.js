@@ -9,6 +9,7 @@ app.controller('LoginCtrl',
                 if (success) {
                     $scope.user = identity.currentUser();
                     notifier.success('Successful login!');
+                    $location.path('/');
                 }
                 else {
                     notifier.error('Not valid input!');
