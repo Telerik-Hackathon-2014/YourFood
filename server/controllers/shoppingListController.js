@@ -26,6 +26,7 @@ module.exports = {
                 }
 
             res.send(collection);
+            res.end();
         });
     },
     getShoppingList: function (req, res) {
@@ -37,6 +38,7 @@ module.exports = {
             }
 
             res.send(list);
+            res.end();
         });
     },
     addProductToShoppingList: function(req, res) {
@@ -50,6 +52,7 @@ module.exports = {
             list.products.push(data.productId);
 
             res.send(list);
+            res.end();
         });
     },
     removeProductFromShoppingList: function(req, res) {
@@ -63,6 +66,7 @@ module.exports = {
             list.products.splice(list.indexOf(data.productId), 1);
 
             res.send(list);
+            res.end();
         });
     }
 };
