@@ -15,6 +15,10 @@ module.exports = function (app) {
     app.post('/api/catalog-products', auth.isAuthenticated, controllers.catalogProducts.createCatalogProduct);
     app.put('/api/catalog-products', auth.isAuthenticated, controllers.catalogProducts.updateCatalogProduct);
 
+    app.get('/api/recipes', auth.isAuthenticated, controllers.recipes.getAllRecipes);
+    app.post('/api/recipes', auth.isAuthenticated, controllers.recipes.createRecipe);
+    app.put('/api/recipes', auth.isAuthenticated, controllers.recipes.updateRecipe);
+
     app.get('/partials/:partialDir/:partialName', function (req, res) {
         res.render('../../public/app/' + req.params.partialDir + '/' + req.params.partialName);
     });
