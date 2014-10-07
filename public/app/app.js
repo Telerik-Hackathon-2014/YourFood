@@ -1,7 +1,7 @@
 var app = angular.module('app', ['ngResource', 'ngRoute', 'ngCookies']).value('toastr', toastr);
 
 app.config(function($routeProvider, $locationProvider){
-    $locationProvider.html5Mode(true);
+//    $locationProvider.html5Mode(true);
 
     var routeUserChecks = {
         adminRole: {
@@ -20,6 +20,10 @@ app.config(function($routeProvider, $locationProvider){
         .when('/', {
             templateUrl: '/partials/main/home',
             controller: 'MainCtrl'
+        })
+        .when('/products', {
+            templateUrl: '/partials/products/products',
+            controller: 'ProductsController'
         })
         .when('/signup', {
             templateUrl: '/partials/account/signup',
