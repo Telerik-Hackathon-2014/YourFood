@@ -13,6 +13,10 @@ module.exports = function (app) {
     app.put('/api/admin/recipes', auth.isInRole('admin'), controllers.recipes.updateRecipe);
     app.delete('/api/admin/recipes', auth.isInRole('admin'), controllers.recipes.updateRecipe);
 
+    app.post('/api/admin/categories', auth.isInRole('admin'), controllers.categories.createCategory);
+    app.put('/api/admin/categories', auth.isInRole('admin'), controllers.categories.updateCategory);
+    app.delete('/api/admin/categories', auth.isInRole('admin'), controllers.categories.removeCategory);
+
     // Users rights
     app.post('/api/users', controllers.users.createUser);
     app.put('/api/users', auth.isAuthenticated, controllers.users.updateUserInformation);
@@ -30,6 +34,9 @@ module.exports = function (app) {
 
     app.get('/api/recipes', controllers.recipes.getAllRecipes);
 
+    app.get('/api/categories', controllers.categories.getAllCategories);
+
+    // Standard routes
     app.get('/partials/:partialDir/:partialName', function (req, res) {
         res.render('../../public/app/' + req.params.partialDir + '/' + req.params.partialName);
     });
