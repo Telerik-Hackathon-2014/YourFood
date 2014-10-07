@@ -23,9 +23,9 @@ module.exports = {
             })
         });
     },
-    updateUser: function(req, res, next){
+    updateUserInformation: function(req, res, next){
 
-        if (req.user._id == req.body._id || req.user.roles.indexOf('admin') > -1){
+        if (req.user._id == req.body._id){
 
             var updatedUserData = req.body;
             if (updatedUserData.password){
@@ -33,8 +33,17 @@ module.exports = {
                 updatedUserData.hashPass = encryption.generateHashedPassword(updatedUserData.salt, updatedUserData.password);
             }
 
-            User.update({_id: req.body._id}, updatedUserData, function () {
-                res.end();
+            User.update({_id: req.body._id}, updatedUserData, function (err) {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+
+                User.findOne({_id: req.body._id}).exec(function(err, user){
+                    console.log(user);
+                    console.log(err);
+                    res.send(user);
+                })
             })
         }
         else {
