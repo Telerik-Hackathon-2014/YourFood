@@ -35,7 +35,7 @@ app.config(function($routeProvider, $locationProvider){
         })
         .when('/recipes/:id', {
             templateUrl: '/partials/recipes/recipe-info',
-            controller: 'RecipesCtrl'
+            controller: 'RecipeDetailsCtrl'
         })
         .when('/signup', {
             templateUrl: '/partials/account/signup',

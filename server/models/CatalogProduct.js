@@ -20,6 +20,10 @@ module.exports.seedInitialCatalogProducts = function () {
 
         if (collection.length === 0) {
             CatalogProduct.create({name: 'Pineapple', category: 'fruit', lifetime: 5});
+            CatalogProduct.create({name: 'Banana', category: 'fruit', lifetime: 5});
+            CatalogProduct.create({name: 'Pork meat', category: 'meat', lifetime: 3});
+            CatalogProduct.create({name: 'Milk', category: 'dairy', lifetime: 8});
+            CatalogProduct.create({name: 'Croasant', category: 'other', lifetime: 2});
             console.log('Catalog products added....');
         }
     });

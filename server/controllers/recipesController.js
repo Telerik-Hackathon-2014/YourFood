@@ -1,6 +1,7 @@
 'use strict';
 
-var Recipe = require('mongoose').model('Recipe');
+var Recipe = require('mongoose').model('Recipe'),
+    itemsPerPage = 10;
 
 module.exports = {
     createRecipe: function (req, res, next) {
@@ -28,15 +29,53 @@ module.exports = {
         }
     },
     getAllRecipes: function (req, res) {
-        Recipe.find({}).exec(function (err, collection) {
-            if (err) {
-                console.log('Trying to get all recipes did not work out: ' + err);
-                return;
-            }
+        // Paging and sorting via the route
+        var page = 0,
+            sortSettings = {};
 
-            res.send(collection);
-            res.end();
-        });
+        if (req.query.page && req.query.page >= 0) {
+            page = req.query.page;
+        }
+
+        if (req.query.name) {
+            if  (req.query.name === "descending"){
+                sortSettings["name"] = "desc";
+            } else {
+                sortSettings["name"] = "asc";
+            }
+        }
+
+        if (req.query.description) {
+            if  (req.query.description === "descending"){
+                sortSettings["description"] = "desc";
+            } else {
+                sortSettings["description"] = "asc";
+            }
+        }
+
+        if (req.query.category) {
+            if  (req.query.category === "descending"){
+                sortSettings["categoryName"] = "desc";
+            } else {
+                sortSettings["categoryName"] = "asc";
+            }
+        }
+
+        Recipe.find({}, null,
+            {
+                skip: page * itemsPerPage,
+                limit: itemsPerPage,
+                sort: sortSettings
+            })
+            .exec(function (err, collection) {
+                if (err) {
+                    console.log('Trying to get all recipes did not work out: ' + err);
+                    return;
+                }
+
+                res.send(collection);
+                res.end();
+            });
     },
     getRecipeById: function (req, res) {
         Recipe.findById(req.params.id, function (err, recipe) {

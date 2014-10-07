@@ -1,6 +1,7 @@
 'use strict';
 
-var CatalogProduct = require('mongoose').model('CatalogProduct');
+var CatalogProduct = require('mongoose').model('CatalogProduct'),
+    itemsPerPage = 15;
 
 module.exports = {
     createCatalogProduct: function (req, res, next) {
@@ -26,15 +27,49 @@ module.exports = {
         }
     },
     getAllCatalogProducts: function (req, res) {
-        CatalogProduct.find({}).exec(function (err, collection) {
-            if (err) {
-                console.log('Trying to get all products did not work out: ' + err);
-                return;
-            }
+        // Paging and sorting via route params
+        var page = 0,
+            sortSettings = {};
 
-            res.send(collection);
-            res.end();
-        });
+        if (req.query.name) {
+            if (req.query.name === 'descending') {
+                sortSettings["name"] = 'desc';
+            } else {
+                sortSettings["name"] = 'asc';
+            }
+        }
+
+        if (req.query.category) {
+            if (req.query.category === 'descending') {
+                sortSettings["category"] = 'desc';
+            } else {
+                sortSettings["category"] = 'asc';
+            }
+        }
+
+        if (req.query.lifetime) {
+            if (req.query.lifetime === 'descending') {
+                sortSettings["lifetime"] = 'desc';
+            } else {
+                sortSettings["lifetime"] = 'asc';
+            }
+        }
+
+        CatalogProduct.find({}, null,
+            {
+                skip: page * itemsPerPage,
+                limit: itemsPerPage,
+                sort: sortSettings
+            })
+            .exec(function (err, collection) {
+                if (err) {
+                    console.log('Trying to get all products did not work out: ' + err);
+                    return;
+                }
+
+                res.send(collection);
+                res.end();
+            });
     },
     getCatalogProductById: function (req, res) {
         var productId = req.body._id;
