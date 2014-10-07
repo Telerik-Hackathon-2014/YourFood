@@ -20,7 +20,7 @@ module.exports = {
     updateRecipe: function (req, res) {
         var newRecipeData = req.body;
 
-        if (req.body._id && Product.findOne({_id: req.body._id}) ) {
+        if (req.body._id && Product.findOne({_id: req.body._id})) {
             Recipe.update({_id: req.body._id}, newRecipeData, function () {
                 res.send(newRecipeData);
                 res.end();
@@ -37,6 +37,16 @@ module.exports = {
             res.send(collection);
             res.end();
         });
+    },
+    getRecipeById: function (req, res) {
+        Recipe.findById(req.params.id, function (err, recipe) {
+            if (err) {
+                console.log('Recipe looked by id could not be found: ' + err)
+            }
+
+            res.send(recipe);
+            res.end();
+        })
     },
     removeRecipe: function (req, res) {
 

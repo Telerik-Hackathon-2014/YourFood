@@ -1,0 +1,23 @@
+.container
+    .row
+        .col-md-8
+            .panel.panel-success.text-center(ng-show="isLogged")
+                .panel-heading
+                    .panel-title
+                        | Recipes
+                .panel-body(ng-repeat="recipe in recipes")
+                    .row
+                        .col-md-6
+                            a(href="#/recipes/{{recipe._id}}")
+                                | {{recipe.name}}
+                        .col-md-3
+                            | {{recipe.description.substring(10, 0)}}....
+                        .col-md-3
+                            | Products : {{recipe.products.length}}
+        .col-md-4
+            .panel.panel-success.text-center
+                .panel-heading
+                    .panel-title
+                        | Filters
+                .panel-body(ng-repeat="recipe in recipes")
+                    | Add filters here
