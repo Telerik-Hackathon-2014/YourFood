@@ -33,7 +33,7 @@ module.exports = {
     removeCategory: function(req, res) {
         var data = req.body;
 
-        Category.remove({_id: data.id}, function(err) {
+        Category.remove({_id: data._id}, function(err) {
             if(err) {
                 console.log('Trying to remove category did not work out: ' + err);
             }

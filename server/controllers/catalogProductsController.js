@@ -29,9 +29,36 @@ module.exports = {
         CatalogProduct.find({}).exec(function (err, collection) {
             if (err) {
                 console.log('Trying to get all products did not work out: ' + err);
+                return;
             }
 
             res.send(collection);
+            res.end();
+        });
+    },
+    getCatalogProduct: function (req, res) {
+        var productId = req.body._id;
+
+        CatalogProduct.findOne({_id: productId}).exec(function(err, product) {
+            if(err) {
+                console.log('Trying to get catalog product did not work out: ' + err);
+                return;
+            }
+
+            res.send(product);
+            res.end();
+        });
+    },
+    deleteCatalogProduct: function(req, res) {
+        var productId = req.body._id;
+
+        CatalogProduct.remove({_id: productId}, true).exec(function(err) {
+            if(err) {
+                console.log('Trying to get catalog product did not work out: ' + err);
+                return;
+            }
+
+            res.end();
         });
     }
 };
