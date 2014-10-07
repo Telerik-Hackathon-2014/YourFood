@@ -20,29 +20,9 @@ app.factory('auth', function ($q, $http, identity, UsersResource) {
                 identity.setCurrentUser(response);
 
                 deferred.resolve(true);
-
-
             });
 
             return deferred.promise;
-        },
-        updatePassword: function (user) {
-//            var deferred = $q.defer();
-//
-//            $http.put('api/users', user).success(function (response) {
-//                if (response.success) {
-////                    var user = new UsersResource();
-////                    angular.extend(user, response.user);
-//                    identity.setCurrentUser(response.user);
-////                    identity.currentUser = user;
-//                    deferred.resolve(true);
-//                }
-//                else {
-//                    deferred.resolve(false);
-//                }
-//            });
-//
-//            return deferred.promise;
         },
         login: function (user) {
             var deferred = $q.defer();
