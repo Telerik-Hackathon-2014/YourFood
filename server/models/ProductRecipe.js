@@ -3,8 +3,8 @@
 var mongoose = require('mongoose');
 
 var productRecipeSchema = mongoose.Schema({
-    name: { type: String, required: true, unique: true},
-    quantity: { type: Number}
+    name: { type: String, required: true, unique: true },
+    quantity: { type: Number }
 });
 
 var ProductRecipe = mongoose.model('ProductRecipe', productRecipeSchema);

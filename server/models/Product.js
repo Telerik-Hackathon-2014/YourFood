@@ -1,12 +1,13 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    CategorySchema = mongoose.model('Category').schema,
     Category = mongoose.model('Category');
 
 var productSchema = mongoose.Schema({
     name: { type: String, required: true, unique: true },
-    category: [CategorySchema],
+    image: { type: String },
+    categoryName: { type: String },
+    categoryImage: { type: String },
     quantity: { type: Number },
     expirationDate: {type: Date },
     purchaseDate: {type: Date, default: Date.now }

@@ -18,6 +18,7 @@ module.exports = function (app) {
     app.delete('/api/catalog-products', auth.isInRole('admin'), controllers.catalogProducts.removeCatalogProduct);
 
     app.get('/api/recipes', auth.isAuthenticated, controllers.recipes.getAllRecipes);
+    app.get('/api/recipes/:id', auth.isAuthenticated, controllers.recipes.getRecipeById);
     app.post('/api/recipes', auth.isInRole('admin'), controllers.recipes.createRecipe);
     app.put('/api/recipes', auth.isInRole('admin'), controllers.recipes.updateRecipe);
     app.delete('/api/recipes', auth.isInRole('admin'), controllers.recipes.updateRecipe);

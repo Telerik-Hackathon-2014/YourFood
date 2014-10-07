@@ -3,13 +3,12 @@
 var mongoose = require('mongoose'),
     ProductRecipeSchema = mongoose.model('ProductRecipe').schema,
     ProductRecipe = mongoose.model('ProductRecipe'),
-    RecipeCategorySchema = mongoose.model('RecipeCategory').schema,
     RecipeCategory = mongoose.model('RecipeCategory');
 
 var recipeSchema = mongoose.Schema({
     name: { type: String, required: true, unique: true },
     description: { type: String, required: true, unique: true },
-    category: [RecipeCategorySchema],
+    categoryName: { type: String },
     products: [ProductRecipeSchema]
 });
 

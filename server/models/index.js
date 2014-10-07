@@ -4,8 +4,8 @@ var Category = require('../models/Category'),
     RecipeCategory = require('../models/RecipeCategory'),
     CatalogProduct = require('../models/CatalogProduct'),
     Product = require('../models/Product'),
-    ShoppingList = require('../models/ShoppingList'),
     ProductRecipe = require('../models/ProductRecipe'),
+    ShoppingList = require('../models/ShoppingList'),
     Recipe = require('../models/Recipe'),
     User = require('../models/User');
 
