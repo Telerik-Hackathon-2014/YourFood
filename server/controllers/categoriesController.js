@@ -26,9 +26,13 @@ module.exports = {
             });
     },
     updateCategory: function (req, res) {
-        var data = req.body;
+        var newCategoryData = req.body;
 
-        // TODO Update category
+        if (req.body._id && Category.findOne({_id: req.body._id})) {
+            Category.update({_id: newCategoryData._id}, newCategoryData, function () {
+                res.end();
+            });
+        }
     },
     removeCategory: function(req, res) {
         var data = req.body;
@@ -38,6 +42,19 @@ module.exports = {
                 console.log('Trying to remove category did not work out: ' + err);
             }
 
+            res.end();
+        });
+    },
+    getCategoryById: function (req, res) {
+        var categoryId = req.body._id;
+
+        Category.findOne({_id: categoryId}).exec(function(err, category) {
+            if (err) {
+                console.log('Trying to get category did not work out: ' + err);
+                return;
+            }
+
+            res.send(category);
             res.end();
         });
     }
