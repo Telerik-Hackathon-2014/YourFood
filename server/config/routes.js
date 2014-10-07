@@ -13,14 +13,14 @@ module.exports = function (app) {
     app.delete('/api/products', auth.isAuthenticated, controllers.products.updateProduct);
 
     app.get('/api/catalog-products', auth.isAuthenticated, controllers.catalogProducts.getAllCatalogProducts);
-    app.post('/api/catalog-products', auth.isAuthenticated, controllers.catalogProducts.createCatalogProduct);
-    app.put('/api/catalog-products', auth.isAuthenticated, controllers.catalogProducts.updateCatalogProduct);
-    app.delete('/api/catalog-products', auth.isAuthenticated, controllers.catalogProducts.removeCatalogProduct);
+    app.post('/api/catalog-products', auth.isInRole('admin'), controllers.catalogProducts.createCatalogProduct);
+    app.put('/api/catalog-products', auth.isInRole('admin'), controllers.catalogProducts.updateCatalogProduct);
+    app.delete('/api/catalog-products', auth.isInRole('admin'), controllers.catalogProducts.removeCatalogProduct);
 
     app.get('/api/recipes', auth.isAuthenticated, controllers.recipes.getAllRecipes);
-    app.post('/api/recipes', auth.isAuthenticated, controllers.recipes.createRecipe);
-    app.put('/api/recipes', auth.isAuthenticated, controllers.recipes.updateRecipe);
-    app.delete('/api/recipes', auth.isAuthenticated, controllers.recipes.updateRecipe);
+    app.post('/api/recipes', auth.isInRole('admin'), controllers.recipes.createRecipe);
+    app.put('/api/recipes', auth.isInRole('admin'), controllers.recipes.updateRecipe);
+    app.delete('/api/recipes', auth.isInRole('admin'), controllers.recipes.updateRecipe);
 
     app.get('/partials/:partialDir/:partialName', function (req, res) {
         res.render('../../public/app/' + req.params.partialDir + '/' + req.params.partialName);

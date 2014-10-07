@@ -1,11 +1,10 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    ProductSchema = mongoose.model('Product').schema,
     Product = mongoose.model('Product');
 
 var shoppingListSchema = mongoose.Schema({
-    products: [ProductSchema],
+    products: [mongoose.Schema.Types.ObjectId],
     dateCreated: { type: Date, default: Date.now},
     dateClosed: { type: Date}
 });
@@ -19,8 +18,21 @@ module.exports.seedInitialLists = function () {
         }
 
         if (collection.length === 0) {
-            ShoppingList.create({name: 'Apple', expirationDate: new Date(2014, 12, 12)});
-            console.log('Lists added....');
+            Product.find({}).exec(function (err, collection) {
+                if (err) {
+                    console.log('Products for shopping not found: '+err);
+                }
+
+                var productsIds =[];
+                for(var productIndex in collection){
+                    productsIds.push(collection[productIndex]._id);
+                }
+
+                ShoppingList.create({products: productsIds});
+                ShoppingList.create({products: [productsIds[0]]});
+                ShoppingList.create({products: [productsIds[1]]});
+                console.log('Lists added....');
+            });
         }
     });
 };
