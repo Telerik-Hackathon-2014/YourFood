@@ -5,17 +5,10 @@ app.controller('RecipesCtrl',
 
         $scope.isLogged = identity.isAuthenticated();
 
-        $scope.recipeId = $routeParams.id;
-
         $scope.test = 'HERE!';
 
         recipesData.getAllRecipes(
             function (data) {
                 $scope.recipes = data;
             });
-
-        recipesData.getRecipeById($scope.recipeId,
-            function (data) {
-                $scope.recipe = data;
-            })
     });
