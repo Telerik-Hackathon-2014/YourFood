@@ -31,6 +31,19 @@ module.exports = {
             }
 
             res.send(collection);
+            res.end();
         });
-    }
+    },
+    removeProduct: function (req, res) {
+
+        Product.findById(req.body.id, function (err, product) {
+            product.remove(function (err) {
+                if (err) {
+                    console.log('Product could not be removed: ' + err);
+                }
+
+                res.end();
+            });
+    });
+}
 };

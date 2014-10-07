@@ -39,6 +39,18 @@ module.exports = {
             res.end();
         });
     },
+    removeRecipe: function (req, res) {
+
+        Recipe.findById(req.body.id, function (err, recipe) {
+            recipe.remove(function (err) {
+                if (err) {
+                    console.log('Recipe could not be removed: ' + err);
+                }
+
+                res.end();
+            });
+        });
+    },
     // TODO: Must add to Recipe model person that creates the recipe so we can filter them
     getRecipesByUse: function (user) {
 
