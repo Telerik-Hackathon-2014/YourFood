@@ -1,12 +1,13 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-    Product = mongoose.model('Product');
+    Product = mongoose.model('Product'),
+    ProductRecipe = mongoose.model('ProductRecipe');
 
 var shoppingListSchema = mongoose.Schema({
     products: [mongoose.Schema.Types.ObjectId],
-    dateCreated: { type: Date, default: Date.now},
-    dateClosed: { type: Date}
+    dateCreated: { type: Date, default: Date.now },
+    dateClosed: { type: Date }
 });
 
 var ShoppingList = mongoose.model('ShoppingList', shoppingListSchema);
@@ -23,8 +24,8 @@ module.exports.seedInitialLists = function () {
                     console.log('Products for shopping not found: '+err);
                 }
 
-                var productsIds =[];
-                for(var productIndex in collection){
+                var productsIds = [];
+                for(var productIndex in collection) {
                     productsIds.push(collection[productIndex]._id);
                 }
 

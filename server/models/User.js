@@ -7,9 +7,9 @@ var mongoose = require('mongoose'),
     Category = mongoose.model('Category');
 
 var userSchema = mongoose.Schema({
-    username: { type: String, required: true, unique: true},
-    firstName: { type: String, required: true, unique: true},
-    lastName: { type: String, required: true, unique: true},
+    username: { type: String, required: true, unique: true },
+    firstName: { type: String, required: true, unique: true },
+    lastName: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     address: String,
     salt: String,
