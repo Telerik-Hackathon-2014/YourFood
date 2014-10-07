@@ -68,5 +68,16 @@ module.exports = {
             res.send(list);
             res.end();
         });
+    },
+    removeShoppingList: function (req, res) {
+        ShoppingList.findById(req.body.id, function (err, shoppingList) {
+            shoppingList.remove(function (err) {
+                if (err) {
+                    console.log('Shopping list could not be removed: ' + err);
+                }
+
+                res.end();
+            });
+        });
     }
 };

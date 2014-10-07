@@ -28,7 +28,6 @@ module.exports = {
         }
     },
     getAllRecipes: function (req, res) {
-        console.log('here');
         Recipe.find({}).exec(function (err, collection) {
             if (err) {
                 console.log('Trying to get all recipes did not work out: ' + err);
@@ -52,7 +51,7 @@ module.exports = {
         });
     },
     // TODO: Must add to Recipe model person that creates the recipe so we can filter them
-    getRecipesByUse: function (user) {
+    getRecipesByUser: function (req, res) {
 
     }
 };

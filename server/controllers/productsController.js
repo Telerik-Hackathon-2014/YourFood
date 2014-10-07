@@ -44,5 +44,18 @@ module.exports = {
                 res.end();
             });
         });
+    },
+    getProductById: function(req, res) {
+        var productId = req.body._id;
+
+        Product.findOne({_id: productId}).exec(function (err, product) {
+            if (err) {
+                console.log('Trying to get product did not work out: ' + err);
+                return;
+            }
+
+            res.send(product);
+            res.end();
+        });
     }
 };
