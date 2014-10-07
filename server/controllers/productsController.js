@@ -18,7 +18,7 @@ module.exports = {
     updateProduct: function (req, res) {
         var newProductData = req.body;
 
-        if (req.body._id && Product.findOne({_id: req.body._id}) ) {
+        if (req.body._id && Product.findOne({_id: req.body._id})) {
             Product.update({_id: req.body._id}, newProductData, function () {
                 res.end();
             });
@@ -33,15 +33,16 @@ module.exports = {
             res.send(collection);
         });
     },
-    deleteProduct: function(req, res) {
-        var data = req.body;
+    removeProduct: function (req, res) {
 
-        Category.remove({_id: data._id}, function(err) {
-            if(err) {
-                console.log('Trying to remove category did not work out: ' + err);
-            }
+        Product.findById(req.body.id, function (err, product) {
+            product.remove(function (err) {
+                if (err) {
+                    console.log('Product could not be removed: ' + err);
+                }
 
-            res.end();
+                res.end();
+            });
         });
     }
 };

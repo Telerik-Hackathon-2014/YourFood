@@ -19,7 +19,7 @@ module.exports = {
     updateCatalogProduct: function (req, res) {
         var newProductData = req.body;
 
-        if (req.body._id && Product.findOne({_id: req.body._id}) ) {
+        if (req.body._id && Product.findOne({_id: req.body._id})) {
             CatalogProduct.update({_id: req.body._id}, newProductData, function () {
                 res.end();
             });
@@ -39,8 +39,8 @@ module.exports = {
     getCatalogProduct: function (req, res) {
         var productId = req.body._id;
 
-        CatalogProduct.findOne({_id: productId}).exec(function(err, product) {
-            if(err) {
+        CatalogProduct.findOne({_id: productId}).exec(function (err, product) {
+            if (err) {
                 console.log('Trying to get catalog product did not work out: ' + err);
                 return;
             }
@@ -49,16 +49,16 @@ module.exports = {
             res.end();
         });
     },
-    deleteCatalogProduct: function(req, res) {
-        var productId = req.body._id;
+    removeCatalogProduct: function (req, res) {
 
-        CatalogProduct.remove({_id: productId}, true).exec(function(err) {
-            if(err) {
-                console.log('Trying to get catalog product did not work out: ' + err);
-                return;
-            }
+        CatalogProduct.findById(req.body.id, function (err, ctProduct) {
+            ctProduct.remove(function (err) {
+                if (err) {
+                    console.log('Catalog product could not be removed: ' + err);
+                }
 
-            res.end();
+                res.end();
+            });
         });
     }
 };
