@@ -4,21 +4,32 @@ app.controller('RecipesCtrl',
     function ($scope, $routeParams, recipesData, identity) {
 
         $scope.isLogged = identity.isAuthenticated();
+        $scope.filter = {};
+        $scope.filter.page = $scope.filter.page || 1;
+        $scope.filter.sortType = $scope.filter.sortType || 'asc';
 
-        recipesData.getAllRecipes(
-            function (data) {
-                $scope.recipes = data;
-            });
-
-        $scope.page = $scope.page || 1;
+        function getRecipes() {
+            recipesData.getAllRecipes(
+                $scope.filter,
+                function (data) {
+                    $scope.recipes = data;
+                });
+        }
 
         $scope.nextPage = function () {
-            $scope.page++;
+            if($scope.recipes.length < 10 || $scope.recipes == undefined)
+            {
+                return;
+            }
+            
+            $scope.filter.page++;
+            getRecipes();
         };
 
         $scope.prevPage = function () {
-            if ($scope.page > 1) {
-                $scope.page--;
+            if ($scope.filter.page > 1) {
+                $scope.filter.page--;
+                getRecipes();
             }
         };
 
@@ -30,6 +41,8 @@ app.controller('RecipesCtrl',
         };
 
         $scope.sort = function () {
-            // TODO ADD FILTERS
+            getRecipes();
         };
+
+        getRecipes();
     });

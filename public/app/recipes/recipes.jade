@@ -28,7 +28,7 @@
                                     strong
                                         | Page:
                                     span#page
-                                        | {{ page }}
+                                        | {{ filter.page }}
                                 .col-md-3.text-right
                                     button(ng-click="nextPage()", class="btn btn-default btn-sm")
                                         strong Next
@@ -47,30 +47,30 @@
                             .list-group-item
                                 .row
                                     .col-md-4.text-right
-                                        input#category(type="checkbox" name="filter" value="Category", ng-model="category")
+                                        input#category(type="checkbox" name="filter" value="Category", ng-model="filter.category")
                                     .col-md-8
                                         label(for="category")
                                             | Category
                             .list-group-item
                                 .row
                                     .col-md-4.text-right
-                                        input#description(type="checkbox" name="filter" value="Description", ng-model="description")
+                                        input#description(type="checkbox" name="filter" value="Description", ng-model="filter.description")
                                     .col-md-8
                                         label(for="description")
                                             | Description
                             .list-group-item
                                 .row
                                     .col-md-4.text-right
-                                        input#name(type="checkbox" name="filter" value="Name", ng-model="name")
+                                        input#name(type="checkbox" name="filter" value="Name", ng-model="filter.name")
                                     .col-md-8
                                         label(for="name")
-                                            | Category
+                                            | Name
                             .list-group-item
                                 .row
                                     .col-md-4.text-right
                                         | Sort Type:
                                     .col-md-8
-                                        select.form-control(ng-model="type")
+                                        select.form-control(ng-model="filter.sortType")
                                             option(value="asc", selected="selected") Ascending
                                             option(value="desc") Descending
                             .list-group-item.active.text-center.pointer(ng-click="sort()")

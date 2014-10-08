@@ -24,14 +24,25 @@ module.exports.seedInitialRecipes = function () {
             var product = new ProductRecipe({name: "Apple"});
             var category = new RecipeCategory({name: "home-made"});
             Recipe.create({name: 'Banitsa', description: "Mnoo wkusna", category: [category], products: [product]});
+            Recipe.create({name: 'Banitsa1', description: "Mnoo wkusna1", category: [category], products: [product]});
+            Recipe.create({name: 'Banitsa2', description: "Mnoo wkusna2", category: [category], products: [product]});
+            Recipe.create({name: 'Banitsa3', description: "Mnoo wkusna3", category: [category], products: [product]});
 
             product = new ProductRecipe({name: "Port"});
             category = new RecipeCategory({name: "home-made"});
             Recipe.create({name: 'Rulo stefani', description: "Pravish kaiva i redish qica, morkovi i kiseli krastavichki. Zavivash gi v kaimata. Pechesh i qdesh", category: [category], products: [product]});
+            Recipe.create({name: 'Rulo stefani1', description: "Pravish kaiva2 i redish qica, morkovi i kiseli krastavichki. Zavivash gi v kaimata. Pechesh i qdesh", category: [category], products: [product]});
+            Recipe.create({name: 'Rulo stefani2', description: "Pravish kaiva i daredish qica, morkovi i kiseli krastavichki. Zavivash gi v kaimata. Pechesh i qdesh", category: [category], products: [product]});
+            Recipe.create({name: 'Rulo stefani3', description: "Pravish kaiva adsai redish qica, morkovi i kiseli krastavichki. Zavivash gi v kaimata. Pechesh i qdesh", category: [category], products: [product]});
+            Recipe.create({name: 'Rulo stefani4', description: "Pravish kaiva idsa redish qica, morkovi i kiseli krastavichki. Zavivash gi v kaimata. Pechesh i qdesh", category: [category], products: [product]});
+            Recipe.create({name: 'Rulo stefan5', description: "Pravish kaiva i redish qica, morkovi i kiseli krastavichki. Zavivash gi v kaimata. Pechesh i qdedsash", category: [category], products: [product]});
 
             product = new ProductRecipe({name: "Cucumbers"});
             category = new RecipeCategory({name: "vegetarian"});
             Recipe.create({name: 'Vegetarianska salata', description: "Postna salata.... ama ubava", category: [category], products: [product]});
+            Recipe.create({name: 'Vegetarianska salata6', description: "Postnddda salata.... ama ubava", category: [category], products: [product]});
+            Recipe.create({name: 'Vegetarianska salat7', description: "Postaana salata.... ama ubava", category: [category], products: [product]});
+            Recipe.create({name: 'Vegetarianska salata8', description: "Postnaaas salata.... ama ubava", category: [category], products: [product]});
             console.log('Recipes added....');
         }
     });
