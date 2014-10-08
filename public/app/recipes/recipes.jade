@@ -18,20 +18,20 @@
             div
                 div.panel.panel-default
                     div.panel-heading
-                        div.panel-title
-                            .row
-                                .col-md-3
-                                    button(ng-click="prevPage()", class="btn btn-default btn-sm")
+                            ul.pager
+                                li.previous
+                                    a(ng-click="prevPage()", class="btn btn-default btn-sm")
                                         span(class="glyphicon glyphicon glyphicon-chevron-left")
+                                        |&nbsp;
                                         strong Previous
-                                .col-md-6.text-center
+                                li
                                     strong
                                         | Page:
                                     span#page
                                         | {{ filter.page }}
-                                .col-md-3.text-right
-                                    button(ng-click="nextPage()", class="btn btn-default btn-sm")
-                                        strong Next
+                                li.next
+                                    a(ng-click="nextPage()", class="btn btn-default btn-sm")
+                                        strong Next&nbsp;
                                         span(class="glyphicon glyphicon glyphicon-chevron-right")
 
                 p(ng-hide="true")
