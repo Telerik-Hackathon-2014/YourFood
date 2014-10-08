@@ -32,5 +32,5 @@
                         input#confirmPassword.form-control(type="password", placeholder="Confirm Password", ng-model="newPassword.confirmPassword")
 
                 .pull-right
-                    button.btn.btn-primary(ng-click="updatePassword(newPassword)", ng-disabled="profileForm.$pristine || passwordForm.$invalid") Update Password
+                    button.btn.btn-primary(ng-click="updatePassword(newPassword)", ng-disabled="passwordForm.$pristine || passwordForm.$invalid") Update Password
                     a.btn.btn-primary(href="#/") Cancel

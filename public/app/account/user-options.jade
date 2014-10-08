@@ -11,7 +11,10 @@ ul.nav.navbar-nav.navbar-right(ng-controller="LoginCtrl", ng-show="identity.isAu
         ul.dropdown-menu
             li(ng-show="identity.isAdmin()")
                 a(href="#/admin/users") Users
+                    img.icon.pull-right(src="images/users.png")
             li(ng-show="identity.isAuthenticated()")
                 a(href="#/profile") Profile
+                    img.icon.pull-right(src="images/settings.png")
             li
                 a(href="#", ng-click="logout()") Sign out
+                    img.icon.pull-right(src="images/logout.png")
