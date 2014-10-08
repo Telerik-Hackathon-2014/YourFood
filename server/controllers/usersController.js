@@ -24,9 +24,6 @@ module.exports = {
         });
     },
     updateUserInformation: function(req, res, next){
-
-        console.log(req.body._id);
-
         if (req.user._id == req.body._id){
 
             var updatedUserData = req.body;
@@ -43,14 +40,11 @@ module.exports = {
                 }
 
                 User.findOne({_id: req.body._id}).exec(function(err, user){
-                    console.log(user);
-                    console.log(err);
                     res.send(user);
                 })
             })
         }
         else {
-            console.log();
             res.send({reason: 'Because!!'});
         }
     },
