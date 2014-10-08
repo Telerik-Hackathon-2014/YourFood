@@ -75,3 +75,6 @@ table tbody tr td a.btn-lg {
   -khtml-opacity: 0.8;
   opacity: 0.8;
 }
+.pointer {
+  cursor: pointer;
+}
