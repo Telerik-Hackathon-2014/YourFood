@@ -15,7 +15,16 @@ module.exports.seedInitialRecipeCategories = function () {
         }
 
         if (collection.length === 0) {
-            RecipeCategory.create({name: 'salad'});
+            RecipeCategory.create({name: 'Breakfast'});
+            RecipeCategory.create({name: 'Lunch'});
+            RecipeCategory.create({name: 'Beverage'});
+            RecipeCategory.create({name: 'Appetizer'});
+            RecipeCategory.create({name: 'Soup'});
+            RecipeCategory.create({name: 'Salad'});
+            RecipeCategory.create({name: 'Main dish'});
+            RecipeCategory.create({name: 'Side dish'});
+            RecipeCategory.create({name: 'Dessert'});
+            RecipeCategory.create({name: 'Bread'});
             console.log('Recipe Categories added....');
         }
     });

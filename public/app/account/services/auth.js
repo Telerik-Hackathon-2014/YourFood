@@ -14,10 +14,8 @@ app.factory('auth', function ($q, $http, identity, UsersResource) {
         },
         updateInformation: function (user) {
             var deferred = $q.defer();
-            console.log(user)
 
             $http.put('api/users', user).success(function (response) {
-                console.log(response)
                 identity.setCurrentUser(response);
 
                 deferred.resolve(true);
@@ -33,10 +31,6 @@ app.factory('auth', function ($q, $http, identity, UsersResource) {
                     var user = new UsersResource();
                     angular.extend(user, response.user);
                     identity.setCurrentUser(user);
-////                    var user = new UsersResource();
-////                    angular.extend(user, response.user);
-//                    identity.setCurrentUser(response.user);
-////                    identity.currentUser = user;
                     deferred.resolve(true);
                 }
                 else {

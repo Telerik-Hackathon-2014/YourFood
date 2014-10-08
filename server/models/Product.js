@@ -9,7 +9,7 @@ var productSchema = mongoose.Schema({
     categoryName: { type: String },
     categoryImage: { type: String },
     quantity: { type: Number },
-    expirationDate: {type: Date },
+    expirationDate: { type: Date },
     purchaseDate: {type: Date, default: Date.now }
 });
 

@@ -15,9 +15,65 @@
                         .col-md-3
                             | Products : {{recipe.products.length}}
         .col-md-4
-            .panel.panel-success.text-center
-                .panel-heading
-                    .panel-title
-                        | Filters
-                .panel-body(ng-repeat="recipe in recipes")
-                    | Add filters here
+            div
+                div.panel.panel-default
+                    div.panel-heading
+                        div.panel-title
+                            .row
+                                .col-md-3
+                                    button(ng-click="prevPage()", class="btn btn-default btn-sm")
+                                        span(class="glyphicon glyphicon glyphicon-chevron-left")
+                                        strong Previous
+                                .col-md-6.text-center
+                                    strong
+                                        | Page:
+                                    span#page
+                                        | {{ filter.page }}
+                                .col-md-3.text-right
+                                    button(ng-click="nextPage()", class="btn btn-default btn-sm")
+                                        strong Next
+                                        span(class="glyphicon glyphicon glyphicon-chevron-right")
+
+                p(ng-hide="true")
+                    button.btn.btn-default.btn-sm(ng-click="status.open = !status.open")
+                        | Toggle last panel
+                accordion(close-others="oneAtATime")
+                    accordion-group(is-open="status.open")
+                        accordion-heading
+                            span.pointer
+                                | Filters
+                            i.pointer.pull-right.glyphicon(ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}")
+                        .list-group
+                            .list-group-item
+                                .row
+                                    .col-md-4.text-right
+                                        input#category(type="checkbox" name="filter" value="Category", ng-model="filter.category")
+                                    .col-md-8
+                                        label(for="category")
+                                            | Category
+                            .list-group-item
+                                .row
+                                    .col-md-4.text-right
+                                        input#description(type="checkbox" name="filter" value="Description", ng-model="filter.description")
+                                    .col-md-8
+                                        label(for="description")
+                                            | Description
+                            .list-group-item
+                                .row
+                                    .col-md-4.text-right
+                                        input#name(type="checkbox" name="filter" value="Name", ng-model="filter.name")
+                                    .col-md-8
+                                        label(for="name")
+                                            | Name
+                            .list-group-item
+                                .row
+                                    .col-md-4.text-right
+                                        | Sort Type:
+                                    .col-md-8
+                                        select.form-control(ng-model="filter.sortType")
+                                            option(value="asc", selected="selected") Ascending
+                                            option(value="desc") Descending
+                            .list-group-item.active.text-center.pointer(ng-click="sort()")
+                                | Sort
+
+
