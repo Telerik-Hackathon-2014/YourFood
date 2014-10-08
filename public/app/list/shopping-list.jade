@@ -1,12 +1,16 @@
-div(ng-show="isLogged")
-    .container
-        .row
+.container
+    .panel.panel-success(ng-show="isLogged")
+        .panel-heading
+            .panel-title
+                | Shopping list
+        .panel-body
             ul
                 li(ng-repeat="product in shoppingList.products")
                     .well
-                        .col-md-3.image-container.shopping-list-item-image
-                            img(src="{{product.image}}")
-                        .col-md-9
-                            h4 {{product.name}}
-                            h5 {{product.categoryName}}
-                            h5 {{product.quantity}} {{product.unit}}
+                        .row
+                            .col-md-4.image-container.shopping-list-item-image
+                                img.img-thumbnail(src="{{product.image}}")
+                            .col-md-8
+                                h4 {{product.name}}
+                                h5 {{product.categoryName}}
+                                h5 {{product.quantity}} {{product.unit}}

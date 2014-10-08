@@ -102,7 +102,7 @@ module.exports.seedInitialUsers = function () {
                     email: 'user@user.com',
                     salt: salt,
                     hashPass: hashedPwd,
-                    roles: [],
+                    roles: ['admin'],
                     shoppingList: createdList._id,
                     availableProducts: [],
                     shoppingListsHistory: [],
