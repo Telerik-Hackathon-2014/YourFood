@@ -67,7 +67,7 @@ module.exports.seedInitialUsers = function () {
                     new ShoppingListProduct({
                         name: 'Pasta',
                         categoryName: 'Breads',
-                        categoryImage: 'images/product-category/bread.jpg',
+                        categoryImage: 'images/product-category/wheat.jpg',
                         unit: 'gr',
                         quantity: 1000,
                         image: 'images/product/pasta.jpg'
@@ -75,7 +75,7 @@ module.exports.seedInitialUsers = function () {
                     new ShoppingListProduct({
                         name: 'Broccoli',
                         categoryName: 'Vegetable',
-                        categoryImage: 'images/product-category/vegetable.jpg',
+                        categoryImage: 'images/product-category/vegetable.png',
                         unit: 'gr',
                         quantity: 500,
                         image: 'images/product/broccoli.png'
@@ -83,7 +83,7 @@ module.exports.seedInitialUsers = function () {
                     new ShoppingListProduct({
                         name: 'Lemon',
                         categoryName: 'Fruit',
-                        categoryImage: 'images/product-category/fruit.jpg',
+                        categoryImage: 'images/product-category/fruit.png',
                         unit: 'gr',
                         quantity: 400,
                         image: 'images/product/lemon.jpg'

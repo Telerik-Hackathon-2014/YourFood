@@ -1,7 +1,12 @@
-.container
-    .row(ng-show="isLogged")
-        ul
-            li(ng-repeat="product in shoppingList.products")
-                .jumbotron
-                    h4 {{product.name}}
-
+div(ng-show="isLogged")
+    .container
+        .row
+            ul
+                li(ng-repeat="product in shoppingList.products")
+                    .well
+                        .col-md-3.image-container.shopping-list-item-image
+                            img(src="{{product.image}}")
+                        .col-md-9
+                            h4 {{product.name}}
+                            h5 {{product.categoryName}}
+                            h5 {{product.quantity}} {{product.unit}}
