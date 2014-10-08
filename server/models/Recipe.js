@@ -7,11 +7,11 @@ var mongoose = require('mongoose'),
 
 var recipeSchema = mongoose.Schema({
     name: { type: String, required: true, unique: true },
-    description: { type: String, required: true, unique: true },
+    description: { type: String, required: true },
     categoryName: { type: String },
-    minutes: { type: Number },
-    image: { type: String },
-    products: [ProductRecipeSchema]
+    products: [ProductRecipeSchema],
+    image: {type: String},
+    time: {type:Number}
 });
 
 var Recipe = mongoose.model('Recipe', recipeSchema);
@@ -58,9 +58,6 @@ module.exports.seedInitialRecipes = function () {
             });
 
             console.log('Recipes added....');
-
-
         }
     });
 };
-

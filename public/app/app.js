@@ -47,10 +47,43 @@ app.config(function($routeProvider, $locationProvider){
             resolve: routeUserChecks.authenticated
         })
         .when('/admin/users', {
-            templateUrl: '/partials/admin/users-list',
-            controller: 'UserListCtrl',
+            templateUrl: '/partials/admin/users/users-list',
+            controller: 'ListUsersController',
             resolve: routeUserChecks.adminRole
         })
+
+        .when('/admin/products/categories', {
+            templateUrl: '/partials/admin/products/product-categories-list',
+            controller: 'ListProductCategoriesController',
+            resolve: routeUserChecks.adminRole
+        })
+        .when('/admin/products/categories/create', {
+            templateUrl: '/partials/admin/products/create-product-category',
+            controller: 'CreateProductCategoryController',
+            resolve: routeUserChecks.adminRole
+        })
+        .when('/admin/products/create', {
+            templateUrl: '/partials/admin/products/create-catalog-product',
+            controller: 'CreateCatalogProductController',
+            resolve: routeUserChecks.adminRole
+        })
+
+        .when('/admin/recipes/categories', {
+            templateUrl: '/partials/admin/recipes/recipe-categories-list',
+            controller: 'ListRecipeCategoriesController',
+            resolve: routeUserChecks.adminRole
+        })
+        .when('/admin/recipes/categories/create', {
+            templateUrl: '/partials/admin/recipes/create-recipe-category',
+            controller: 'CreateRecipeCategoryController',
+            resolve: routeUserChecks.adminRole
+        })
+        .when('/admin/recipes/create', {
+            templateUrl: '/partials/admin/recipes/create-recipe',
+            controller: 'CreateRecipeController',
+            resolve: routeUserChecks.adminRole
+        })
+
         .otherwise({redirectTo: '/'})
 });
 

@@ -11,7 +11,7 @@ module.exports = {
         Recipe.create(newRecipeData, function (err, product) {
             if (err) {
                 console.log('Failed to create recipe: ' + err);
-                return;
+                return next(err);
             }
 
             res.send(product);
@@ -21,7 +21,7 @@ module.exports = {
     updateRecipe: function (req, res) {
         var newRecipeData = req.body;
 
-        if (req.body._id && Product.findOne({_id: req.body._id})) {
+        if (req.body._id && Recipe.findOne({_id: req.body._id})) {
             Recipe.update({_id: req.body._id}, newRecipeData, function () {
                 res.send(newRecipeData);
                 res.end();

@@ -4,13 +4,13 @@ var CatalogProduct = require('mongoose').model('CatalogProduct'),
     itemsPerPage = 15;
 
 module.exports = {
-    createCatalogProduct: function (req, res, next) {
+    createRecipe: function (req, res, next) {
         var newProductData = req.body;
 
         CatalogProduct.create(newProductData, function (err, product) {
             if (err) {
                 console.log('Failed to create product: ' + err);
-                return;
+                return next(err);
             }
 
             res.send(product);

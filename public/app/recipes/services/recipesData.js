@@ -5,8 +5,25 @@ app.factory('recipesData',
         var recipesApi = 'api/recipes';
 
         return {
-            getAllRecipes: function (success) {
-                $http.get(recipesApi)
+            getAllRecipes: function (filters, success) {
+                console.log(filters);
+                var url = recipesApi + '?page=' + (filters.page -1);
+
+                if (filters.category) {
+                    url += '&orderByCategory=true';
+                }
+
+                if (filters.description) {
+                    url += '&orderByDescription=true';
+                }
+
+                if (filters.name) {
+                    url += '&orderByName=true';
+                }
+
+                url += '&sortType=' + filters.sortType;
+
+                $http.get(url)
                     .success(function (data) {
                         success(data);
                     })

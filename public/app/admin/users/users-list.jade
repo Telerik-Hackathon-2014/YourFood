@@ -1,0 +1,18 @@
+.container
+    row.col-md-3
+    row.col-md-6
+        table.table.text-center.table-hover.table-striped
+            thead
+                tr
+                    th Username
+                    th Roles
+                    th Options
+            tbody
+                tr(ng-repeat="user in users")
+                    td {{ user.username }}
+                    td {{ user.roles }}
+                    td
+                        a.btn-lg(title="Show Info")
+                            span.glyphicon.glyphicon-info-sign
+                        a.btn-lg(title="Edit")
+                            span.glyphicon.glyphicon-edit
