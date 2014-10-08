@@ -14,11 +14,11 @@
                 .form-group
                     label.col-md-2.control-label(for="email") Email
                     .col-md-10
-                        input#last-name.form-control(type="email", placeholder="Email", ng-model="user.email", required)
+                        input#email.form-control(type="email", placeholder="Email", ng-model="user.email", required)
                 .pull-right
                     button.btn.btn-primary(ng-click="updateInformation(user)", ng-disabled="profileForm.$pristine || profileForm.$invalid") Update
                     a.btn.btn-primary(href="#/") Cancel
-
+    .well
         form.form-horizontal(name="passwordForm")
             fieldset
                 legend Update password
@@ -32,5 +32,5 @@
                         input#confirmPassword.form-control(type="password", placeholder="Confirm Password", ng-model="newPassword.confirmPassword")
 
                 .pull-right
-                    button.btn.btn-primary(ng-click="updatePassword(newPassword)", ng-disabled="passwordForm.$pristine || passwordForm.$invalid") Update Password
+                    button.btn.btn-primary(ng-click="updatePassword(newPassword)", ng-disabled="passwordForm.$pristine || passwordForm.$invalid || newPassword.password != newPassword.confirmPassword") Update Password
                     a.btn.btn-primary(href="#/") Cancel

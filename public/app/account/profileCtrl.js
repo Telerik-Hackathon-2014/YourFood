@@ -1,8 +1,14 @@
 app.controller('ProfileCtrl', function ($scope, $location, auth, identity, notifier) {
-    $scope.user = identity.currentUser();
+    var userInfo = identity.currentUser();
+
+    $scope.user = {
+        _id: userInfo._id,
+        firstName: userInfo.firstName,
+        lastName: userInfo.lastName,
+        email: userInfo.email
+    };
 
     $scope.updateInformation = function (user) {
-        console.log(user);
         auth.updateInformation(user).then(function () {
             $scope.user.firstName = user.firstName;
             $scope.user.lastName = user.lastName;

@@ -12,14 +12,14 @@ app.factory('identity', function ($cookieStore, $window, UsersResource) {
             return currentUser;
         },
         setCurrentUser: function (user) {
-            if (user) {
-                $cookieStore.put(cookieStorageUserKey, user);
-            }
-            else {
-                $cookieStore.remove(cookieStorageUserKey);
-            }
-
-            currentUser = user;
+//            if (user) {
+//                $cookieStore.put(cookieStorageUserKey, user);
+//            }
+//            else {
+//                $cookieStore.remove(cookieStorageUserKey);
+//            }
+//
+         currentUser = user;
         },
         isAuthenticated: function () {
             return !!this.currentUser();

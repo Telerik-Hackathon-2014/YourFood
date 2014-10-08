@@ -23,6 +23,12 @@ block main-content
     section
         div(ng-view)
 
-    footer
-        p.text-center
-            | YourFood &copy; 2014 Hackathon
+    div.panel-footer.navbar-fixed-bottom
+        footer.text-center
+            small
+                a(href="https://github.com/Telerik-Hackathon-2014/YourFood" target="_blank") YourFood&nbsp;
+                | &#169; 2014,
+                a(href="http://telerikacademy.com/" target="_blank") Telerik Academy
+            br
+            small
+                a(href="https://github.com/Telerik-Hackathon-2014/YourFood" target="_blank") Open Source Project at GitHub

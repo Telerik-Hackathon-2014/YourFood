@@ -6,7 +6,7 @@ ul.nav.navbar-nav.navbar-right(ng-controller="LoginCtrl", ng-hide="identity.isAu
 ul.nav.navbar-nav.navbar-right(ng-controller="LoginCtrl", ng-show="identity.isAuthenticated()")
     li.dropdown
         a.dropdown-toggle(href="", data-toggle="dropdown")
-            | {{ identity.currentUser().firstName + " " + identity.currentUser().lastName }}
+            | {{ identity.currentUser().firstName + " " + identity.currentUser().lastName }}&nbsp;
             span.caret
         ul.dropdown-menu
             li(ng-show="identity.isAdmin()")

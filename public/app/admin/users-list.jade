@@ -1,5 +1,12 @@
 .container
-    table.table
-        tr(ng-repeat="user in users")
-            td {{ user.firstName }}
-            td {{ user.lastName }}
+    row.col-md-3
+    row.col-md-6
+        table.table.text-center.table-hover.table-striped
+            thead
+                tr
+                    th Username
+                    th Roles
+            tbody
+                tr(ng-repeat="user in users")
+                    td {{ user.username }}
+                    td {{ user.roles }}
