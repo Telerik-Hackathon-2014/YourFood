@@ -1,9 +1,7 @@
 var mongoose = require('mongoose'),
     encryption = require('../utilities/encryption'),
     ShoppingList = mongoose.model('ShoppingList'),
-    ShoppingListSchema = mongoose.model('ShoppingList').schema,
     Product = mongoose.model('Product'),
-    ProductSchema = mongoose.model('Product').schema,
     Category = mongoose.model('Category');
 
 var userSchema = mongoose.Schema({
@@ -22,12 +20,7 @@ var userSchema = mongoose.Schema({
 
 userSchema.method({
     authenticate: function (password) {
-        if (encryption.generateHashedPassword(this.salt, password) === this.hashPass) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return encryption.generateHashedPassword(this.salt, password) === this.hashPass;
     }
 });
 
@@ -45,25 +38,24 @@ module.exports.seedInitialUsers = function () {
 
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt, 'yasen');
-            User.create({username: 'yasen', firstName: 'Yasen', lastName: 'Mihaylov', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+            User.create({username: 'yasen', firstName: 'Yasen', lastName: 'Mihaylov', email: 'user@user.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
 
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt, 'zdravko');
-            User.create({username: 'zdravko', firstName: 'Zdravko', lastName: 'Georgiev', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+            User.create({username: 'zdravko', firstName: 'Zdravko', lastName: 'Georgiev', email: 'user@user.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
 
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt, 'stefan');
-            User.create({username: 'stefan', firstName: 'Stefan', lastName: 'Dimov', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+            User.create({username: 'stefan', firstName: 'Stefan', lastName: 'Dimov', email: 'user@user.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
 
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt, 'niki');
-            User.create({username: 'niki', firstName: 'Nikolay', lastName: 'Radkov', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+            User.create({username: 'niki', firstName: 'Nikolay', lastName: 'Radkov', email: 'user@user.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
 
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt, 'flextry');
-            User.create({username: 'flextry', firstName: 'Martin', lastName: 'Nikolov', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+            User.create({username: 'flextry', firstName: 'Martin', lastName: 'Nikolov', email: 'user@user.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
             console.log('users added to database');
-
 
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt, 'user');
