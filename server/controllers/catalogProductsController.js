@@ -71,7 +71,7 @@ module.exports = {
             });
     },
     getCatalogProductById: function (req, res) {
-        var productId = req.body._id;
+        var productId = req.params.id;
 
         CatalogProduct.findOne({_id: productId}).exec(function (err, product) {
             if (err) {

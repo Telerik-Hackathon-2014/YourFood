@@ -1,4 +1,19 @@
 .container
-    .jumbotron(ng-show="isLogged")
-        h2
-            | Your Product {{currentCatalogProduct.name}}
+    .row
+        .jumbotron.col-md-8(ng-show="isLogged")
+            .row
+                .col-md-6
+                    .image-container
+                        img(src="{{product.image}}")
+                .col-md-6
+                    h2
+                        | {{product.name}}
+                    .row
+                        strong.col-md-8.text-left Category
+                        .col-md-4.text-right {{product.categoryName}}
+                    .row
+                        strong.col-md-8.text-left Unit type
+                        .col-md-4.text-right {{product.categoryName}}
+                    .row
+                        strong.col-md-8.text-left Avarage freshnes
+                        .col-md-4.text-right {{product.lifetime}} days

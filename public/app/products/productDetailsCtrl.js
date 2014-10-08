@@ -7,6 +7,6 @@ app.controller('ProductDetailsCtrl', function ($scope, $routeParams, identity, p
 
     productsData.getProductById($scope.productId,
         function (data) {
-            $scope.currentCatalogProduct = data;
+            $scope.product = data;
         })
 });
