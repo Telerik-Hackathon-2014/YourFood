@@ -26,7 +26,7 @@ module.exports.seedInitialRecipes = function () {
             Recipe.create({
                 name: 'Blue cheese and broccoli pasta',
                 description: 'Cook the pasta according to packet instructions. Place the broccoli in a steamer or in a saucepan of boiling water and cook until just tender, for approximately 5 minutes. Drain well then transfer to a food processor and blend to a bright green purée. Place the crème fraîche and cheese in a medium saucepan over a low heat and stir until the cheese has melted to form a smooth sauce. Stir in the lemon zest and juice, plenty of pepper and the nutmeg. Scrape the broccoli purée into the pan and stir well. Pour the sauce over the cooked pasta and sprinkle with the walnuts to serve. ',
-                category: 'Main dishes',
+                categoryName: 'Main dishes',
                 products: [
                     new ProductRecipe({
                         name: 'Pasta',

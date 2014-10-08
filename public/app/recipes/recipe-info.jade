@@ -1,19 +1,24 @@
 .container
     .jumbotron(ng-show="isLogged")
         .row
-            .col-md-6.text-center
+            .col-md-5.text-center
                 .image-container
                     img(src="{{recipe.image}}", alt="no image")
-            .col-md-6
-                h1.top
-                    | {{recipe.category.name}}
-                h2
+            .col-md-7
+                h3.toast-title
                     | {{recipe.name}}
-                h2
-                    | Products
-                h4(ng-repeat="product in recipe.products") {{product.name}}
-
-        br
+                br
+                h4
+                    strong Category: {{recipe.categoryName}}
+                br
+                h4
+                    | Products:
+                    a.btn.btn-danger.pull-right(ng-click="showProducts = !showProducts")
+                        | Show
+                div(ng-show="showProducts")
+                    h5(ng-repeat="product in recipe.products") {{product.name}}
         .row.text-center
             .col-lg-12
+                h3
+                    | Description:
                 | {{recipe.description}}
