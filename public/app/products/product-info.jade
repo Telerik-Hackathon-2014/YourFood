@@ -2,10 +2,10 @@
     .row
         .jumbotron.col-md-8(ng-show="isLogged")
             .row
-                .col-md-6
+                .col-md-4
                     .image-container
-                        img(src="{{product.image}}")
-                .col-md-6
+                        img.img-thumbnail(src="{{product.image}}")
+                .col-md-8
                     h2
                         | {{product.name}}
                     .row

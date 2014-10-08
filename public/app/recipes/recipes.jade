@@ -1,19 +1,20 @@
 .container
     .row
         .col-md-8
-            .panel.panel-success.text-center(ng-show="isLogged")
+            .panel.panel-success(ng-show="isLogged")
                 .panel-heading
                     .panel-title
                         | Recipes
                 .panel-body(ng-repeat="recipe in recipes")
                     .row
-                        .col-md-6
+                        .col-md-4.image-container
                             a(href="#/recipes/{{recipe._id}}")
-                                | {{recipe.name}}
-                        .col-md-3
-                            | {{recipe.description.substring(10, 0)}}....
-                        .col-md-3
-                            | Products : {{recipe.products.length}}
+                                img.img-thumbnail(src="{{recipe.image}}")
+                        .col-md-8
+                            a(href="#/recipes/{{recipe._id}}")
+                                h4 {{recipe.name}}
+                            h5 Ingredients :
+                            h6(ng-repeat="product in recipe.products") {{product.quantity}} gr. {{product.name}}
         .col-md-4
             div
                 div.panel.panel-default
