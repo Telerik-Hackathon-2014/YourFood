@@ -1,5 +1,4 @@
 body {
-  padding-top: 120px;
   padding-top: 60px;
   padding-bottom: 80px;
 }
@@ -40,6 +39,12 @@ h2 {
 table thead tr th {
   text-align: center;
 }
+.col-product {
+  margin-right: 10px;
+}
+.image-container img {
+  width: 100%;
+}
 table tbody tr td a.btn-lg {
   padding: 10px 6px;
 }
@@ -56,17 +61,6 @@ table tbody tr td a.btn-lg {
   margin-right: -25%;
   margin-bottom: -25%;
 }
-
-table thead tr th {
-  text-align: center;
-}
-.col-product {
-  margin-right: 10px;
-}
-.image-container img {
-    width: 100%;
-}
-
 #loadingover {
   background: #000;
   z-index: 99;

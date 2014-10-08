@@ -48,7 +48,7 @@ app.controller('CreateCatalogProductController', function ($scope, $routeParams,
 
     function addCatalogProductToDatabase(catalogProduct, imageUrl) {
         var catalogProductModel = {
-            category: catalogProduct.category,
+            categoryName: catalogProduct.category,
             image: imageUrl,
             lifetime: catalogProduct.lifetime,
             name: catalogProduct.name,
