@@ -6,10 +6,10 @@
             a(href="#/signup") Sign Up
     ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
         li.dropdown
-            a.dropdown-toggle(href="", data-toggle="dropdown")
+            a#dropdownMenu1.dropdown-toggle(href="#")
                 | {{ identity.currentUser().firstName + " " + identity.currentUser().lastName }}&nbsp;
                 span.caret
-            ul.dropdown-menu
+            ul.dropdown-menu(role="menu" aria-labelledby="dropdownMenu1")
                 li(ng-show="identity.isAdmin()")
                     a(href="#/admin/recipes/create") Create Recipe
                 li(ng-show="identity.isAdmin()")
