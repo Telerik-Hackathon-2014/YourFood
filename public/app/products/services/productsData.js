@@ -5,8 +5,24 @@ app.factory('productsData',
         var productsApi = 'api/catalog-products';
 
         return{
-            getAllProducts: function (success) {
-                $http.get(productsApi)
+            getAllProducts: function (filter, success) {
+                var url = productsApi + '?page=' + (filter.page -1);
+
+                if (filter.category) {
+                    url += '&orderByCategory=true';
+                }
+
+                if (filter.lifetime) {
+                    url += '&orderByLifeTime=true';
+                }
+
+                if (filter.name) {
+                    url += '&orderByName=true';
+                }
+
+                url += '&sortType=' + filter.sortType;
+
+                $http.get(url)
                     .success(function (data) {
                         success(data);
                     })
