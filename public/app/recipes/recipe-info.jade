@@ -2,9 +2,10 @@
     .jumbotron(ng-show="isLogged")
         .row
             .col-md-6.text-center
-                | Snimka tuka trqbva... :)
+                .image-container
+                    img(src="{{recipe.image}}", alt="no image")
             .col-md-6
-                h2
+                h1.top
                     | {{recipe.category.name}}
                 h2
                     | {{recipe.name}}
