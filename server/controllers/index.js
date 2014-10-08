@@ -3,7 +3,8 @@ var usersController = require('../controllers/usersController'),
     catalogProductsController = require('../controllers/catalogProductsController'),
     recipesController = require('../controllers/recipesController'),
     categoriesController = require('../controllers/categoriesController'),
-    shoppingListController = require('../controllers/shoppingListController');
+    shoppingListController = require('../controllers/shoppingListController'),
+    recipeCategoriesController = require('../controllers/recipeCategoriesController');
 
 module.exports = {
     users: usersController,
@@ -11,5 +12,6 @@ module.exports = {
     catalogProducts: catalogProductsController,
     recipes: recipesController,
     shoppingLists: shoppingListController,
-    categories: categoriesController
+    categories: categoriesController,
+    recipeCategories: recipeCategoriesController
 };

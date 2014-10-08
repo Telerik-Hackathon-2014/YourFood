@@ -1,21 +1,11 @@
-app.controller('ProductsController', function ($scope, identity) {
+'use strict';
+
+app.controller('ProductsController', function ($scope, identity, productsData) {
     $scope.identity = identity;
     $scope.isLogged = identity.isAuthenticated();
 
-    $scope.products = [
-        {
-            name: "pesho",
-            category: "gosho"
-        },
-        {
-            name: "ivan",
-            category: "ivanivan"
-        },
-        {
-            name: "zaa",
-            category: "zaa"
-        }
-    ];
-
-    $scope.catalogueProducts = $scope.products;
+    productsData.getAllProducts(
+        function (data) {
+            $scope.catalogProducts = data;
+        });
 });
