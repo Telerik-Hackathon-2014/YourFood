@@ -9,6 +9,8 @@ var recipeSchema = mongoose.Schema({
     name: { type: String, required: true, unique: true },
     description: { type: String, required: true, unique: true },
     categoryName: { type: String },
+    minutes: { type: Number },
+    image: { type: String },
     products: [ProductRecipeSchema]
 });
 
@@ -21,18 +23,43 @@ module.exports.seedInitialRecipes = function () {
         }
 
         if (collection.length === 0) {
-            var product = new ProductRecipe({name: "Apple"});
-            var category = new RecipeCategory({name: "home-made"});
-            Recipe.create({name: 'Banitsa', description: "Mnoo wkusna", category: [category], products: [product]});
+            Recipe.create({
+                name: 'Blue cheese and broccoli pasta',
+                description: 'Cook the pasta according to packet instructions. Place the broccoli in a steamer or in a saucepan of boiling water and cook until just tender, for approximately 5 minutes. Drain well then transfer to a food processor and blend to a bright green purée. Place the crème fraîche and cheese in a medium saucepan over a low heat and stir until the cheese has melted to form a smooth sauce. Stir in the lemon zest and juice, plenty of pepper and the nutmeg. Scrape the broccoli purée into the pan and stir well. Pour the sauce over the cooked pasta and sprinkle with the walnuts to serve. ',
+                category: 'Main dishes',
+                products: [
+                    new ProductRecipe({
+                        name: 'Pasta',
+                        quantity: 400
+                    }),
+                    new ProductRecipe({
+                        name: 'Broccoli',
+                        quantity: 250
+                    }),
+                    new ProductRecipe({
+                        name: 'Half fat creme',
+                        quantity: 200
+                    }),
+                    new ProductRecipe({
+                        name: 'Blue cheese',
+                        quantity: 200
+                    }),
+                    new ProductRecipe({
+                        name: 'Lemon',
+                        quantity: 200
+                    }),
+                    new ProductRecipe({
+                        name: 'Walnut',
+                        quantity: 30
+                    })
+                ],
+                time: 25,
+                image: '../../public/images/recipe/blue-cheese-pasta.jpg'
+            });
 
-            product = new ProductRecipe({name: "Port"});
-            category = new RecipeCategory({name: "home-made"});
-            Recipe.create({name: 'Rulo stefani', description: "Pravish kaiva i redish qica, morkovi i kiseli krastavichki. Zavivash gi v kaimata. Pechesh i qdesh", category: [category], products: [product]});
-
-            product = new ProductRecipe({name: "Cucumbers"});
-            category = new RecipeCategory({name: "vegetarian"});
-            Recipe.create({name: 'Vegetarianska salata', description: "Postna salata.... ama ubava", category: [category], products: [product]});
             console.log('Recipes added....');
+
+
         }
     });
 };
