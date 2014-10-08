@@ -17,6 +17,11 @@ module.exports = function (app) {
     app.put('/api/admin/categories', auth.isInRole('admin'), controllers.categories.updateCategory);
     app.delete('/api/admin/categories', auth.isInRole('admin'), controllers.categories.removeCategory);
 
+    app.post('/api/admin/recipe-categories', auth.isInRole('admin'), controllers.recipeCategories.createRecipeCategory);
+    app.put('/api/admin/recipe-categories', auth.isInRole('admin'), controllers.recipeCategories.updateRecipeCategory);
+    app.delete('/api/admin/recipe-categories', auth.isInRole('admin'), controllers.recipeCategories.removeRecipeCategory);
+
+
     // Users rights
     app.post('/api/users', controllers.users.createUser);
     app.put('/api/users', auth.isAuthenticated, controllers.users.updateUserInformation);
@@ -26,6 +31,9 @@ module.exports = function (app) {
     app.delete('/api/products', auth.isAuthenticated, controllers.products.updateProduct);
 
     app.get('/api/recipes/:id', auth.isAuthenticated, controllers.recipes.getRecipeById);
+
+    app.get('/api/admin/recipe-categories/:id', auth.isAuthenticated, controllers.recipeCategories.getRecipeCategoryById);
+    app.get('/api/admin/recipe-categories', auth.isAuthenticated, controllers.recipeCategories.getAllRecipeCategories);
 
     // Public rights
     app.get('/api/products', controllers.products.getAllProducts);

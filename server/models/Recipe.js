@@ -37,7 +37,7 @@ module.exports.seedInitialRecipes = function () {
                         quantity: 250
                     }),
                     new ProductRecipe({
-                        name: 'Half fat creme',
+                        name: 'Cooking cream',
                         quantity: 200
                     }),
                     new ProductRecipe({

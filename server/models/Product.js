@@ -36,15 +36,15 @@ module.exports.seedInitialProducts = function () {
                 name: 'Broccoli',
                 image: '../../public/images/product/broccoli.png',
                 categoryName: 'Vegetable',
-                categoryImage: '../../public/images/product-category/bread.jpg',
+                categoryImage: '../../public/images/product-category/vegetable.jpg',
                 quantity: 500,
                 expirationDate: new Date(2014, 12, 12),
                 purchaseDate: new Date()
             });
 
             Product.create({
-                name: 'Fat creme',
-                image: '../../public/images/product/fat-creme.png',
+                name: 'Cooking cream',
+                image: '../../public/images/product/cooking-creme.png',
                 categoryName: 'Dairy',
                 categoryImage: '../../public/images/product-category/dairy.jpg',
                 quantity: 400,
