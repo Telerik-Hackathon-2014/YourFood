@@ -31,6 +31,10 @@ module.exports = {
         var page = 0,
             sortSettings = {};
 
+        if (req.query.page && req.query.page > 0){
+            page = req.query.page;
+        }
+
         if (req.query.name) {
             if (req.query.name === 'descending') {
                 sortSettings["name"] = 'desc';
@@ -54,6 +58,8 @@ module.exports = {
                 sortSettings["lifetime"] = 'asc';
             }
         }
+
+        console.log(page);
 
         CatalogProduct.find({}, null,
             {
