@@ -1,27 +1,27 @@
-app.factory('identity', function($cookieStore, UsersResource){
+app.factory('identity', function ($cookieStore, $window, UsersResource) {
     var cookieStorageUserKey = 'currentYourFoodUser';
 
     var currentUser;
+    if ($window.bootstrappedUserObject) {
+        currentUser = new UsersResource();
+        angular.extend(currentUser, $window.bootstrappedUserObject);
+    }
+
     return {
         currentUser: function () {
-            var savedUser = $cookieStore.get(cookieStorageUserKey);
-            if(savedUser){
-                return savedUser;
-            }
-
             return currentUser;
         },
         setCurrentUser: function (user) {
-            if  (user){
+            if (user) {
                 $cookieStore.put(cookieStorageUserKey, user);
             }
-            else{
+            else {
                 $cookieStore.remove(cookieStorageUserKey);
             }
 
             currentUser = user;
         },
-        isAuthenticated: function(){
+        isAuthenticated: function () {
             return !!this.currentUser();
         },
         isAuthorizedForRole: function (role) {

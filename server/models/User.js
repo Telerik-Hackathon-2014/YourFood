@@ -75,7 +75,7 @@ module.exports.seedInitialUsers = function () {
                 email: 'user@user.com',
                 salt: salt,
                 hashPass: hashedPwd,
-                roles: ['admin'],
+                roles: [],
                 availableProducts: [],
                 shoppingListsHistory: [],
                 productsHistory: []
