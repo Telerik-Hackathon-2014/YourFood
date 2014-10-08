@@ -6,7 +6,6 @@ app.factory('recipesData',
 
         return {
             getAllRecipes: function (filters, success) {
-                console.log(filters);
                 var url = recipesApi + '?page=' + (filters.page -1);
 
                 if (filters.category) {
