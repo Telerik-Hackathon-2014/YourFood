@@ -6,14 +6,18 @@
                     .image-container
                         img(src="{{product.image}}")
                 .col-md-6
-                    h2
+                    h3
                         | {{product.name}}
+                    .panel
+                        .panel-body
+                            strong.col-md-8.text-left Category
+                            .col-md-4.text-right {{product.categoryName}}
+                        .panel-body
+                            strong.col-md-8.text-left Unit type
+                            .col-md-4.text-right {{product.unit}}
+                        .panel-body
+                            strong.col-md-8.text-left Avarage freshnes
+                            .col-md-4.text-right {{product.lifetime}} days
                     .row
-                        strong.col-md-8.text-left Category
-                        .col-md-4.text-right {{product.categoryName}}
-                    .row
-                        strong.col-md-8.text-left Unit type
-                        .col-md-4.text-right {{product.categoryName}}
-                    .row
-                        strong.col-md-8.text-left Avarage freshnes
-                        .col-md-4.text-right {{product.lifetime}} days
+                        div.text-right.bottom-right
+                            a.btn.btn-lb.btn-success(href="#", ng-click="addToList()") Add to List
