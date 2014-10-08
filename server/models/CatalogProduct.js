@@ -26,6 +26,55 @@ module.exports.seedInitialCatalogProducts = function () {
             CatalogProduct.create({name: 'Croasant', category: 'other', lifetime: 2});
             console.log('Catalog products added....');
         }
+
+        CatalogProduct.create({
+            name: 'Pasta',
+            categoryName: 'Breads',
+            lifetime: 60,
+            unit: 'gr',
+            image: '../../public/images/product/pasta.jpg'
+        });
+
+        CatalogProduct.create({
+            name: 'Broccoli',
+            categoryName: 'Vegetable',
+            lifetime: 10,
+            unit: 'gr',
+            image: '../../public/images/product/broccoli.png'
+        });
+
+        CatalogProduct.create({
+            name: 'Cooking cream',
+            categoryName: 'Dairy',
+            lifetime: 7,
+            unit: 'gr',
+            image: '../../public/images/product/cooking-cream.jpg'
+        });
+
+        CatalogProduct.create({
+            name: 'Blue cheese',
+            categoryName: 'Dairy',
+            lifetime: 9,
+            unit: 'gr',
+            image: '../../public/images/product/cheese.jpg'
+        });
+
+        CatalogProduct.create({
+            name: 'Lemon',
+            categoryName: 'Fruit',
+            lifetime: 21,
+            unit: 'gr',
+            image: '../../public/images/product/lemon.jpg'
+        });
+
+        CatalogProduct.create({
+            name: 'Walnut',
+            categoryName: 'Nut',
+            lifetime: 60,
+            unit: 'gr',
+            image: '../../public/images/product/walnut.jpg'
+        });
+
+
     });
 };
-

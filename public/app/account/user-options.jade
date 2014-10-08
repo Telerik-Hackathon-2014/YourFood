@@ -1,20 +1,36 @@
-ul.nav.navbar-nav.navbar-right(ng-controller="LoginCtrl", ng-hide="identity.isAuthenticated()")
-    li
-        a(href="#/login") Login
-    li
-        a(href="#/signup") Sign Up
-ul.nav.navbar-nav.navbar-right(ng-controller="LoginCtrl", ng-show="identity.isAuthenticated()")
-    li.dropdown
-        a.dropdown-toggle(href="", data-toggle="dropdown")
-            | {{ identity.currentUser().firstName + " " + identity.currentUser().lastName }}&nbsp;
-            span.caret
-        ul.dropdown-menu
-            li(ng-show="identity.isAdmin()")
-                a(href="#/admin/users") Users
-                    img.icon.pull-right(src="images/users.png")
-            li(ng-show="identity.isAuthenticated()")
-                a(href="#/profile") Profile
-                    img.icon.pull-right(src="images/settings.png")
-            li
-                a(href="#", ng-click="logout()") Sign out
-                    img.icon.pull-right(src="images/logout.png")
+#navbar-main.collapse.navbar-collapse(ng-controller="LoginCtrl")
+    ul.nav.navbar-nav.navbar-right(ng-hide="identity.isAuthenticated()")
+        li
+            a(href="#/login") Login
+        li
+            a(href="#/signup") Sign Up
+    ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
+        li.dropdown
+            a.dropdown-toggle(href="", data-toggle="dropdown")
+                | {{ identity.currentUser().firstName + " " + identity.currentUser().lastName }}&nbsp;
+                span.caret
+            ul.dropdown-menu
+                li(ng-show="identity.isAdmin()")
+                    a(href="#/admin/recipes/create") Create Recipe
+                li(ng-show="identity.isAdmin()")
+                    a(href="#/admin/recipes/categories") Recipe Categories
+                    li(ng-show="identity.isAdmin()")
+                        a(href="#/admin/recipes/categories/create") Create Recipe Category
+                    li.divider
+                li(ng-show="identity.isAdmin()")
+                    a(href="#/admin/products/create") Create Catalog Product
+                li(ng-show="identity.isAdmin()")
+                    a(href="#/admin/products/categories") Product Categories
+                li(ng-show="identity.isAdmin()")
+                    a(href="#/admin/products/categories/create") Create Product Category
+                li.divider
+                li(ng-show="identity.isAdmin()")
+                    a(href="#/admin/users") Users
+                        img.icon.pull-right(src="images/users.png")
+                li.divider
+                li(ng-show="identity.isAuthenticated()")
+                    a(href="#/profile") Profile
+                        img.icon.pull-right(src="images/settings.png")
+                li
+                    a(href="#", ng-click="logout()") Sign out
+                        img.icon.pull-right(src="images/logout.png")

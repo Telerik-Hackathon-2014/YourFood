@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 
 var productRecipeSchema = mongoose.Schema({
-    name: { type: String, required: true, unique: true },
+    name: { type: String },
     quantity: { type: Number }
 });
 
