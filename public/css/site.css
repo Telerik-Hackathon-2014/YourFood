@@ -1,5 +1,6 @@
 body {
   padding-top: 120px;
+  padding-bottom: 80px;
 }
 .navbar-right .navbar-form input {
   margin-right: 20px;
@@ -7,11 +8,8 @@ body {
 .navbar-right .navbar-form a.btn {
   margin-left: 20px;
 }
-footer {
-  margin-top: 50px;
-}
 .pull-right button {
-  margin-right: 20px;
+  margin-right: 5px;
 }
 .toast-top-right {
   top: 70px;
@@ -38,6 +36,12 @@ h2 {
   width: 20%;
   height: 20%;
 }
-.pointer {
-  cursor: pointer;
+table thead tr th {
+  text-align: center;
+}
+.col-product {
+  margin-right: 10px;
+}
+.image-container img {
+  width: 100%;
 }

@@ -24,7 +24,7 @@ module.exports.seedInitialCatalogProducts = function () {
                 categoryName: 'Breads',
                 lifetime: 60,
                 unit: 'gr',
-                image: '../../public/images/product/pasta.jpg'
+                image: 'images/product/pasta.jpg'
             });
 
             CatalogProduct.create({
@@ -32,7 +32,7 @@ module.exports.seedInitialCatalogProducts = function () {
                 categoryName: 'Vegetable',
                 lifetime: 10,
                 unit: 'gr',
-                image: '../../public/images/product/broccoli.png'
+                image: 'images/product/broccoli.png'
             });
 
             CatalogProduct.create({
@@ -40,7 +40,7 @@ module.exports.seedInitialCatalogProducts = function () {
                 categoryName: 'Dairy',
                 lifetime: 7,
                 unit: 'gr',
-                image: '../../public/images/product/cooking-cream.jpg'
+                image: 'images/product/cooking-cream.jpg'
             });
 
             CatalogProduct.create({
@@ -48,7 +48,7 @@ module.exports.seedInitialCatalogProducts = function () {
                 categoryName: 'Dairy',
                 lifetime: 9,
                 unit: 'gr',
-                image: '../../public/images/product/cheese.jpg'
+                image: 'images/product/cheese.jpg'
             });
 
             CatalogProduct.create({
@@ -56,7 +56,7 @@ module.exports.seedInitialCatalogProducts = function () {
                 categoryName: 'Fruit',
                 lifetime: 21,
                 unit: 'gr',
-                image: '../../public/images/product/lemon.jpg'
+                image: 'images/product/lemon.jpg'
             });
 
             CatalogProduct.create({
@@ -64,7 +64,7 @@ module.exports.seedInitialCatalogProducts = function () {
                 categoryName: 'Nut',
                 lifetime: 60,
                 unit: 'gr',
-                image: '../../public/images/product/walnut.jpg'
+                image: 'images/product/walnut.jpg'
             });
             console.log('Catalog products added....');
         }

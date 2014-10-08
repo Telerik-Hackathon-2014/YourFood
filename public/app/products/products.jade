@@ -4,5 +4,6 @@
             .row
                 .jumbotron.col-md-3.text-center.col-product(ng-repeat="product in catalogProducts")
                     a(href="#/products/{{product._id}}")
-                        img(src="url", alt="no picture")
+                        .image-container.col-md-12
+                            img(src="{{product.image}}", alt="no picture")
                         div {{product.name}}

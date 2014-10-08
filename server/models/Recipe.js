@@ -54,7 +54,7 @@ module.exports.seedInitialRecipes = function () {
                     })
                 ],
                 time: 25,
-                image: '../../public/images/recipe/blue-cheese-pasta.jpg'
+                image: 'images/recipe/blue-cheese-pasta.jpg'
             });
 
             console.log('Recipes added....');
