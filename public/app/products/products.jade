@@ -2,71 +2,8 @@
     .row(ng-show="isLogged")
         .col-md-8
             .row
-                #cat-product.jumbotron.col-md-3.text-center.col-product(ng-repeat="product in catalogProducts", heigth="100%")
+                .jumbotron.col-md-3.text-center.col-product(ng-repeat="product in catalogProducts")
                     a(href="#/products/{{product._id}}")
-                        .row
-                            .image-container.col-md-12
-                                img(src="{{product.image}}", alt="no picture")
-                        .row
-                            .col-lg-12 {{product.name}}
-        .col-md-4
-            div
-                div.panel.panel-default
-                    div.panel-heading
-                        ul.pager
-                            li.previous
-                                a(ng-click="prevPage()", class="btn btn-default btn-sm")
-                                    span(class="glyphicon glyphicon glyphicon-chevron-left")
-                                    |&nbsp;
-                                    strong Previous
-                            li
-                                strong
-                                    | Page:
-                                span#page
-                                    | {{ filter.page }}
-                            li.next
-                                a(ng-click="nextPage()", class="btn btn-default btn-sm")
-                                    strong Next&nbsp;
-                                    span(class="glyphicon glyphicon glyphicon-chevron-right")
-
-                p(ng-hide="true")
-                    button.btn.btn-default.btn-sm(ng-click="status.open = !status.open")
-                        | Toggle last panel
-                accordion(close-others="oneAtATime")
-                    accordion-group(is-open="status.open")
-                        accordion-heading(ng-click="status.open = !status.open")
-                            span.pointer
-                                | Filters
-                            i.pointer.pull-right.glyphicon(ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}")
-                        .list-group
-                            .list-group-item
-                                .row
-                                    .col-md-4.text-right
-                                        input#category(type="checkbox" name="filter" value="Category", ng-model="filter.category")
-                                    .col-md-8
-                                        label(for="category")
-                                            | Category
-                            .list-group-item
-                                .row
-                                    .col-md-4.text-right
-                                        input#description(type="checkbox" name="filter" value="Lifetime", ng-model="filter.lifetime")
-                                    .col-md-8
-                                        label(for="description")
-                                            | Lifetime
-                            .list-group-item
-                                .row
-                                    .col-md-4.text-right
-                                        input#name(type="checkbox" name="filter" value="Name", ng-model="filter.name")
-                                    .col-md-8
-                                        label(for="name")
-                                            | Name
-                            .list-group-item
-                                .row
-                                    .col-md-4.text-right
-                                        | Sort Type:
-                                    .col-md-8
-                                        select.form-control(ng-model="filter.sortType")
-                                            option(value="asc", selected="selected") Ascending
-                                            option(value="desc") Descending
-                            .list-group-item.active.text-center.pointer(ng-click="sort()")
-                                | Sort
+                        .image-container.col-md-12
+                            img.img-thumbnail(src="{{product.image}}", alt="no picture")
+                        div {{product.name}}

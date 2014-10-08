@@ -3,7 +3,7 @@
         .row
             .col-md-5.text-center
                 .image-container
-                    img(src="{{recipe.image}}", alt="no image")
+                    img.img-thumbnail(src="{{recipe.image}}", alt="no image")
             .col-md-7
                 h3.toast-title
                     | {{recipe.name}}
@@ -12,12 +12,12 @@
                     strong Category: {{recipe.categoryName}}
                 br
                 h4
-                    | Products:
+                    | Ingredients:
                     a.btn.btn-danger.pull-right(ng-click="showProducts = !showProducts")
                         | Show
                 div(ng-show="showProducts")
-                    h5(ng-repeat="product in recipe.products") {{product.name}}
-        .row.text-center
+                    h5(ng-repeat="product in recipe.products") {{product.quantity}} gr. {{product.name}}
+        .row
             .col-lg-12
                 h3
                     | Description:
