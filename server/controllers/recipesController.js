@@ -31,34 +31,29 @@ module.exports = {
     getAllRecipes: function (req, res) {
         // Paging and sorting via the route
         var page = 0,
-            sortSettings = {};
+            sortSettings = {},
+            sortType = 'asc';
 
-        if (req.query.page && req.query.page >= 0) {
+        if (req.query.page && req.query.page > 0){
             page = req.query.page;
         }
 
-        if (req.query.name) {
-            if  (req.query.name === "descending"){
-                sortSettings["name"] = "desc";
-            } else {
-                sortSettings["name"] = "asc";
-            }
+        if (req.query.sortType &&
+            (req.query.sortType == 'asc' ||
+             req.query.sortType == 'desc')){
+            sortType = req.query.sortType;
         }
 
-        if (req.query.description) {
-            if  (req.query.description === "descending"){
-                sortSettings["description"] = "desc";
-            } else {
-                sortSettings["description"] = "asc";
-            }
+        if (req.query.orderByDescription) {
+            sortSettings["description"] = sortType;
         }
 
-        if (req.query.category) {
-            if  (req.query.category === "descending"){
-                sortSettings["categoryName"] = "desc";
-            } else {
-                sortSettings["categoryName"] = "asc";
-            }
+        if (req.query.orderByCategory) {
+            sortSettings["categoryName"] = sortType;
+        }
+
+        if (req.query.orderByName) {
+            sortSettings["name"] = sortType;
         }
 
         Recipe.find({}, null,

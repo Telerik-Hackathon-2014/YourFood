@@ -1,7 +1,7 @@
 var passport = require('passport');
 
 module.exports = {
-    login: function(req, res, next) {
+    login: function (req, res, next) {
         var auth = passport.authenticate('local', function (err, user) {
             if (err) return next(err);
             if (!user) return res.send({success: false});
@@ -13,12 +13,12 @@ module.exports = {
         });
         auth(req, res, next);
     },
-    logout: function(req, res, next){
+    logout: function (req, res, next) {
         req.logout();
         res.end();
     },
     isAuthenticated: function (req, res, next) {
-        if (!req.isAuthenticated()){
+        if (!req.isAuthenticated()) {
             res.status(403);
             res.end();
         }
@@ -28,7 +28,7 @@ module.exports = {
     },
     isInRole: function (role) {
         return function (req, res, next) {
-            if (req.isAuthenticated() && req.user.roles.indexOf(role) > -1){
+            if (req.isAuthenticated() && req.user.roles.indexOf(role) > -1) {
                 next();
             }
             else {

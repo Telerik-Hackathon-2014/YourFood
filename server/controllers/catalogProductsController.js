@@ -29,30 +29,29 @@ module.exports = {
     getAllCatalogProducts: function (req, res) {
         // Paging and sorting via route params
         var page = 0,
-            sortSettings = {};
+            sortSettings = {},
+            sortType = 'asc';
 
-        if (req.query.name) {
-            if (req.query.name === 'descending') {
-                sortSettings["name"] = 'desc';
-            } else {
-                sortSettings["name"] = 'asc';
-            }
+        if (req.query.page && req.query.page > 0){
+            page = req.query.page;
         }
 
-        if (req.query.category) {
-            if (req.query.category === 'descending') {
-                sortSettings["category"] = 'desc';
-            } else {
-                sortSettings["category"] = 'asc';
-            }
+        if (req.query.sortType &&
+            (req.query.sortType == 'asc' ||
+             req.query.sortType == 'desc')){
+            sortType = req.query.sortType;
         }
 
-        if (req.query.lifetime) {
-            if (req.query.lifetime === 'descending') {
-                sortSettings["lifetime"] = 'desc';
-            } else {
-                sortSettings["lifetime"] = 'asc';
-            }
+        if (req.query.orderByName) {
+            sortSettings["name"] = sortType;
+        }
+
+        if (req.query.orderByCategory) {
+            sortSettings["category"] = sortType;
+        }
+
+        if (req.query.orderByLifeTime) {
+            sortSettings["lifetime"] = sortType;
         }
 
         CatalogProduct.find({}, null,
