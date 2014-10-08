@@ -1,13 +1,8 @@
 .container
-    .jumbotron(ng-show="isLogged")
-        h2
-            | Your Products
-        .row
-            .col-lg-3(ng-repeat="product in products")
-                | {{ product.name }} {{ product.category }}
-    .jumbotron
-        h2
-            | Catalogue Products
-        .row
-            .col-lg-3(ng-repeat="catalogueProduct in catalogueProducts")
-                | {{ catalogueProduct.name }} {{ catalogueProduct.category }}
+    .row(ng-show="isLogged")
+        .col-md-8
+            .row
+                .jumbotron.col-md-3.text-center.col-product(ng-repeat="product in catalogProducts")
+                    a(href="#/products/{{product._id}}")
+                        img(src="url", alt="no picture")
+                        div {{product.name}}
