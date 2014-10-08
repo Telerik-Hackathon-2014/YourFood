@@ -38,7 +38,7 @@
                     button.btn.btn-default.btn-sm(ng-click="status.open = !status.open")
                         | Toggle last panel
                 accordion(close-others="oneAtATime")
-                    accordion-group(is-open="status.open")
+                    accordion-group(is-open="status.open", ng-click="status.open = !status.open")
                         accordion-heading
                             span.pointer
                                 | Filters
