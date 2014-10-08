@@ -40,7 +40,7 @@ module.exports.seedInitialCatalogProducts = function () {
                 categoryName: 'Dairy',
                 lifetime: 7,
                 unit: 'gr',
-                image: 'images/product/cooking-cream.jpg'
+                image: 'images/product/cooking-cream.png'
             });
 
             CatalogProduct.create({
@@ -48,7 +48,7 @@ module.exports.seedInitialCatalogProducts = function () {
                 categoryName: 'Dairy',
                 lifetime: 9,
                 unit: 'gr',
-                image: 'images/product/cheese.jpg'
+                image: 'images/product/cheese.png'
             });
 
             CatalogProduct.create({
