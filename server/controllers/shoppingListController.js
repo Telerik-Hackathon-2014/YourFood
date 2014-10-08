@@ -1,4 +1,5 @@
-var ShoppingList = require('mongoose').model('ShoppingList');
+var ShoppingList = require('mongoose').model('ShoppingList'),
+    User = require('mongoose').model('User');
 
 module.exports = {
     createShoppingList: function (req, res) {
@@ -14,25 +15,26 @@ module.exports = {
             res.end();
         });
     },
-    getAllShoppingListsByUser: function (req, res) {
-        var userData = req.body;
+    getShoppingListsHistory: function (req, res) {
+        var userId = req.params.id;
 
-        ShoppingList.find({})
-            .where('_id')
-            .in(userData.shoppingListsHistory)
-            .exec(function (err, collection) {
-                if (err) {
-                    console.log('Trying to get all shopping lists did not work out: ' + err);
-                }
+        User.findById({_id: userId}, function(user) {
+            ShoppingList.find({})
+                .where('_id')
+                .in(user.shoppingListsHistory)
+                .exec(function (err, collection) {
+                    if (err) {
+                        console.log('Trying to get all shopping lists did not work out: ' + err);
+                    }
 
-            res.send(collection);
-            res.end();
+                    res.send(collection);
+                    res.end();
+                });
         });
     },
     getShoppingList: function (req, res) {
-        var data = req.body;
-
-        ShoppingList.findOne({_id: data.id}).exec(function(err, list) {
+        var shoppingListId = req.params.id;
+        ShoppingList.findOne({_id: shoppingListId}).exec(function(err, list) {
             if(err) {
                 console.log('Trying to get shopping list did not work out: ' + err);
             }

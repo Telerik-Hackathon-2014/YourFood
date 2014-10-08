@@ -36,6 +36,9 @@ module.exports = function (app) {
     app.get('/api/admin/recipe-categories/:id', auth.isAuthenticated, controllers.recipeCategories.getRecipeCategoryById);
     app.get('/api/recipe-categories', controllers.recipeCategories.getAllRecipeCategories);
 
+    app.get('/api/shopping-list/:id', auth.isAuthenticated, controllers.shoppingLists.getShoppingList);
+    app.get('/api/shopping-list/history/:id', auth.isAuthenticated, controllers.shoppingLists.getShoppingListsHistory);
+
     // Public rights
     app.get('/api/products', controllers.products.getAllProducts);
 

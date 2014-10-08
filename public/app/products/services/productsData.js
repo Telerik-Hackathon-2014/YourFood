@@ -1,7 +1,7 @@
 'use strict';
 
 app.factory('productsData',
-    function ($http,notifier) {
+    function ($http, notifier) {
         var productsApi = 'api/catalog-products';
 
         return{

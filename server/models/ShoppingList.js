@@ -2,10 +2,11 @@
 
 var mongoose = require('mongoose'),
     Product = mongoose.model('Product'),
-    ProductRecipe = mongoose.model('ProductRecipe');
+    ProductRecipe = mongoose.model('ProductRecipe'),
+    ShoppingListProduct = mongoose.model('ShoppingListProduct');
 
 var shoppingListSchema = mongoose.Schema({
-    products: [mongoose.Schema.Types.ObjectId],
+    products: [ShoppingListProduct.schema],
     dateCreated: { type: Date, default: Date.now },
     dateClosed: { type: Date }
 });
