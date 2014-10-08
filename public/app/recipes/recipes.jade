@@ -38,8 +38,8 @@
                     button.btn.btn-default.btn-sm(ng-click="status.open = !status.open")
                         | Toggle last panel
                 accordion(close-others="oneAtATime")
-                    accordion-group(is-open="status.open", ng-click="status.open = !status.open")
-                        accordion-heading
+                    accordion-group(is-open="status.open")
+                        accordion-heading(ng-click="status.open = !status.open")
                             span.pointer
                                 | Filters
                             i.pointer.pull-right.glyphicon(ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}")
