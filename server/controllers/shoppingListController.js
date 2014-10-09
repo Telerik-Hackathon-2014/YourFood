@@ -5,17 +5,7 @@ var mongoose = require('mongoose'),
 
 module.exports = {
     createShoppingList: function (req, res) {
-        var newShoppingList = req.body;
-
-        ShoppingList.create(newShoppingList, function (err, shoppingList) {
-            if (err) {
-                console.log('Failed to create shopping list: ' + err);
-                return;
-            }
-
-            res.send(shoppingList);
-            res.end();
-        });
+        // TODO: IF needed
     },
     getShoppingListsHistory: function (req, res) {
         var userId = req.params.id;
@@ -45,30 +35,64 @@ module.exports = {
             res.end();
         });
     },
+    closeShoppingList: function (req, res) {
+        var userId = req.params.id;
+
+        User.findById(userId).exec(function (err, user) {
+            if (err) {
+                console.log('Could ')
+            }
+
+            ShoppingList.findById(user.shoppingList).exec(function (err, userList) {
+                if (err) {
+                    console.log('Could not find the users list in the Db: ' + err);
+                }
+
+
+            })
+        });
+
+        ShoppingList.findByIdAndUpdate(
+            listId,
+            {$set: {
+                "products": [],
+                "dateClosed": Date.now()
+            }},
+            {safe: true, upsert: true},
+            function (err, list) {
+                if (err) {
+                    console.log(err);
+                }
+
+                res.send(list);
+                res.end();
+            }
+        );
+    },
     addProductToShoppingList: function (req, res) {
         var newProductData = new ShoppingListProduct(req.body),
             listId = req.params.id;
 
-//        ShoppingList.findById(listId,
-//            function (err, list) {
-//                if(err){
-//                    console.log('could not find list to add product in it: '+err);
-//                }
-//
-//                for(var product in list.products){
-//                    if(product.name == newProductData.name){
-//                        res.statusCode(404);
-//                        res.send('Product already exists in list');
-//                        res.end();
-//                    }
-//                }
+        ShoppingList.findById(listId,
+            function (err, list) {
+                if (err) {
+                    console.log('could not find list to add product in it: ' + err);
+                }
+
+                for (var product in list.products) {
+                    if (product.name == newProductData.name) {
+                        res.statusCode(404);
+                        res.send('Product already exists in list');
+                        res.end();
+                    }
+                }
 
                 ShoppingList.findByIdAndUpdate(
                     listId,
                     {$push: {"products": newProductData}},
                     {safe: true, upsert: true},
-                    function(err, list) {
-                        if (err){
+                    function (err, list) {
+                        if (err) {
                             console.log(err);
                         }
 
@@ -76,8 +100,7 @@ module.exports = {
                         res.end();
                     }
                 );
-//            })
-
+            })
     },
     removeProductFromShoppingList: function (req, res) {
         var data = req.body;

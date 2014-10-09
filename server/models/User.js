@@ -41,23 +41,23 @@ module.exports.seedInitialUsers = function () {
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt, 'yasen');
             User.create({username: 'yasen', firstName: 'Yasen', lastName: 'Mihaylov', email: 'yasen@yasen.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
-
-            salt = encryption.generateSalt();
-            hashedPwd = encryption.generateHashedPassword(salt, 'zdravko');
-            User.create({username: 'zdravko', firstName: 'Zdravko', lastName: 'Georgiev', email: 'zdravko@zdravko.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
-
-            salt = encryption.generateSalt();
-            hashedPwd = encryption.generateHashedPassword(salt, 'stefan');
-            User.create({username: 'stefan', firstName: 'Stefan', lastName: 'Dimov', email: 'stefan@stefan.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
-
-            salt = encryption.generateSalt();
-            hashedPwd = encryption.generateHashedPassword(salt, 'niki');
-            User.create({username: 'niki', firstName: 'Nikolay', lastName: 'Radkov', email: 'niki@niki.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
-
-            salt = encryption.generateSalt();
-            hashedPwd = encryption.generateHashedPassword(salt, 'flextry');
-            User.create({username: 'flextry', firstName: 'Martin', lastName: 'Nikolov', email: 'flextry@flextry.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
-            console.log('users added to database');
+//
+//            salt = encryption.generateSalt();
+//            hashedPwd = encryption.generateHashedPassword(salt, 'zdravko');
+//            User.create({username: 'zdravko', firstName: 'Zdravko', lastName: 'Georgiev', email: 'zdravko@zdravko.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+//
+//            salt = encryption.generateSalt();
+//            hashedPwd = encryption.generateHashedPassword(salt, 'stefan');
+//            User.create({username: 'stefan', firstName: 'Stefan', lastName: 'Dimov', email: 'stefan@stefan.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+//
+//            salt = encryption.generateSalt();
+//            hashedPwd = encryption.generateHashedPassword(salt, 'niki');
+//            User.create({username: 'niki', firstName: 'Nikolay', lastName: 'Radkov', email: 'niki@niki.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+//
+//            salt = encryption.generateSalt();
+//            hashedPwd = encryption.generateHashedPassword(salt, 'flextry');
+//            User.create({username: 'flextry', firstName: 'Martin', lastName: 'Nikolov', email: 'flextry@flextry.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+//            console.log('users added to database');
 
             salt = encryption.generateSalt();
             hashedPwd = encryption.generateHashedPassword(salt, 'user');

@@ -38,6 +38,7 @@ module.exports = function (app) {
 
     app.get('/api/shopping-list/:id', auth.isAuthenticated, controllers.shoppingLists.getShoppingList);
     app.post('/api/shopping-list/:id', auth.isAuthenticated, controllers.shoppingLists.addProductToShoppingList);
+    app.put('/api/shopping-list/:id', auth.isAuthenticated, controllers.shoppingLists.closeShoppingList);
     app.get('/api/shopping-list/history/:id', auth.isAuthenticated, controllers.shoppingLists.getShoppingListsHistory);
 
     // Public rights
