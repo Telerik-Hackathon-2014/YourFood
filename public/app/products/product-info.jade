@@ -23,5 +23,8 @@
                             .col-md-8
                                 input(type="range", step="50", min="50", max="2000", ng-model="quantity")
                     .row
-                        div.text-right.bottom-right
+                        div.col-md-4
                             a.btn.btn-lb.btn-success(href="#/products", ng-click="addToShoppingList(quantity)") Add to List
+                        div.col-md-3
+                        div.col-md-5
+                            a.btn.btn-lb.btn-success.text-left(href="#/products", ng-click="addToFridge(quantity)") Add to Fridge

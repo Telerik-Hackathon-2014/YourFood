@@ -1,4 +1,9 @@
 app.controller('ProfileCtrl', function ($scope, $location, auth, identity, notifier) {
+    if(!identity.isAuthenticated()) {
+        $location.path('/login');
+        return;
+    }
+
     var userInfo = identity.currentUser();
 
     $scope.user = {

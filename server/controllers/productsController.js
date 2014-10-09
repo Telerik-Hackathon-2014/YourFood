@@ -57,5 +57,10 @@ module.exports = {
             res.send(product);
             res.end();
         });
+    },
+    addProductToFridge: function(req, res) {
+        var productToAdd = req.body;
+
+        
     }
 };
