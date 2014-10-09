@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
     hashPass: String,
     roles: [String],
     shoppingList: mongoose.Schema.Types.ObjectId,
-    availableProducts: [mongoose.Schema.Types.ObjectId],
+    availableProducts: [],
     shoppingListsHistory: [mongoose.Schema.Types.ObjectId],
     productsHistory: [mongoose.Schema.Types.ObjectId]
 });
@@ -80,7 +80,7 @@ module.exports.seedInitialUsers = function () {
                 }
                 salt = encryption.generateSalt();
                 hashedPwd = encryption.generateHashedPassword(salt, 'flextry');
-                User.create({username: 'flextry', firstName: 'Martin', lastName: 'Nikolov', email: 'flextry@flextry.com', salt: salt, hashPass: hashedPwd, roles: ['admin']});
+                User.create({username: 'flextry', firstName: 'Martin', lastName: 'Nikolov', email: 'flextry@flextry.com', salt: salt, hashPass: hashedPwd, roles: ['admin'], shoppingList: list._id});
             });
 
             console.log('users added to database');

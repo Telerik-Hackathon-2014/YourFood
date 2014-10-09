@@ -1,0 +1,2 @@
+127.0.0.1 - - [Thu, 09 Oct 2014 14:56:23 GMT] "GET /api/catalog-products/54369def94c8fe2c18f46e24 HTTP/1.1" 403 - "http://localhost:3030/" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36"
+127.0.0.1 - - [Thu, 09 Oct 2014 14:56:29 GMT] "GET /api/catalog-products/54369def94c8fe2c18f46e25 HTTP/1.1" 403 - "http://localhost:3030/" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/37.0.2062.124 Safari/537.36"
