@@ -1,6 +1,11 @@
 'use strict';
 
-app.controller('ShoppingListCtrl', function ($scope, identity, shoppingListData) {
+app.controller('ShoppingListCtrl', function ($scope, $location, identity, shoppingListData) {
+    if(!identity.isAuthenticated()) {
+        $location.path('/');
+        return;
+    }
+
     $scope.isLogged = identity.isAuthenticated();
     var listId = identity.currentUser().shoppingList;
 

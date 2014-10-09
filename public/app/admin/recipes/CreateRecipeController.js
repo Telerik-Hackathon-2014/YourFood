@@ -1,4 +1,9 @@
-app.controller('CreateRecipeController', function ($scope, $routeParams, $location, notifier, auth, YourFoodService, EverliveService) {
+app.controller('CreateRecipeController', function ($scope, $routeParams, $location, notifier, auth, YourFoodService, EverliveService, identity) {
+    if(!identity.isAuthenticated()) {
+        $location.path('/');
+        return;
+    }
+
     var categories = {};
 
     YourFoodService.getRecipeCategoryNames()

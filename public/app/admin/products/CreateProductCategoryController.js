@@ -1,4 +1,10 @@
-app.controller('CreateProductCategoryController', function ($scope, $routeParams, $location, notifier, YourFoodService) {
+app.controller('CreateProductCategoryController', function ($scope, $routeParams, $location, notifier, YourFoodService, identity) {
+    if(!identity.isAuthenticated()) {
+        $location.path('/');
+        return;
+    }
+
+
     $scope.createCategory = function (category) {
         YourFoodService.createProductCategory(category)
             .then(function () {

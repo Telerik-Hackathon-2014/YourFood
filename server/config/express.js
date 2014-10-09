@@ -3,11 +3,16 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
-    passport = require('passport');
+    passport = require('passport'),
+    morgan = require('morgan'),
+    fs = require('fs');
+
+var logStream = fs.createWriteStream(__dirname + './../logs/errors.log', {flags: 'a'});
 
 module.exports = function(app, config){
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');
+    app.use(morgan('combined', {stream: logStream, skip: function (req, res) { return res.statusCode < 400 }}));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true
