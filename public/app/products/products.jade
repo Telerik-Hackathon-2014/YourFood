@@ -1,7 +1,7 @@
 .container
     .row
         .col-md-8
-            .panel.panel-success
+            .panel.panel-success.content-background
                 .panel-heading
                     .panel-title Available Products
                 .panel-body
@@ -13,7 +13,7 @@
                                         img.ct-product-image.img-thumbnail(src="{{product.image}}", alt="no picture")
                                     .row.text-center
                                         .col-lg-12 {{product.name}}
-            .panel.panel-success(ng-show="isLogged")
+            .panel.panel-success.content-background(ng-show="isLogged")
                 .panel-heading
                     .panel-title Catalog Products
                 .panel-body
@@ -85,5 +85,5 @@
                                         select.form-control(ng-model="filter.sortType")
                                             option(value="asc", selected="selected") Ascending
                                             option(value="desc") Descending
-                            .list-group-item.active.text-center.pointer(ng-click="sort()")
+                            .list-group-item.active-list-item.text-center.pointer(ng-click="sort()")
                                 | Sort

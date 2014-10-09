@@ -1,7 +1,7 @@
 .container
     .row
         .col-md-8
-            .panel.panel-success
+            .panel.panel-success.content-background
                 .panel-heading
                     .panel-title
                         | Recipes
@@ -12,9 +12,9 @@
                                 img.img-thumbnail(src="{{recipe.image}}")
                         .col-md-8
                             a(href="#/recipes/{{recipe._id}}")
-                                h4 {{recipe.name}}
-                            h5 Ingredients :
-                            h6(ng-repeat="product in recipe.products") {{product.quantity}} gr. {{product.name}}
+                                h4.recipes-content {{recipe.name}}
+                            h5.recipes-content Ingredients :
+                            h6.recipes-content(ng-repeat="product in recipe.products") {{product.quantity}} gr. {{product.name}}
         .col-md-4
             div
                 div.panel.panel-default
@@ -74,7 +74,7 @@
                                         select.form-control(ng-model="filter.sortType")
                                             option(value="asc", selected="selected") Ascending
                                             option(value="desc") Descending
-                            .list-group-item.active.text-center.pointer(ng-click="sort()")
+                            .list-group-item.active-list-item.text-center.pointer(ng-click="sort()")
                                 | Sort
 
 

@@ -1,6 +1,6 @@
 extends includes/layout
 block main-content
-    header.nav.navbar-default.navbar-fixed-top
+    header.nav.navbar-inverse.navbar-fixed-top
         .container
             .navbar-header
                 button.navbar-toggle(type="button", data-toggle="collapse",data-target="#navbar-main")
@@ -23,12 +23,12 @@ block main-content
 
     div#loadingmsg(style="display:none;") Redirecting, please wait...
     div#loadingover(style="display:none;")
-    div.panel-footer.navbar-fixed-bottom
+    div#footer.navbar-fixed-bottom.layout-footer
         footer.text-center
-            small
+            strong
                 a(href="https://github.com/Telerik-Hackathon-2014/YourFood" target="_blank") YourFood&nbsp;
                 | &#169; 2014,
                 a(href="http://telerikacademy.com/" target="_blank") Telerik Academy
             br
-            small
+            strong
                 a(href="https://github.com/Telerik-Hackathon-2014/YourFood" target="_blank") Open Source Project at GitHub
