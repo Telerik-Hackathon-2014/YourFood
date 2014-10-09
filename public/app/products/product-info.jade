@@ -21,7 +21,7 @@
                         .panel-body.text-center.quantity-slider
                             .col-md-4 {{quantity}} {{product.unit}}
                             .col-md-8
-                                input(type="range", step="50", min="50", max="2000" ng-model="quantity")
+                                input(type="range", step="50", min="50", max="2000", ng-model="quantity")
                     .row
                         div.text-right.bottom-right
                             a.btn.btn-lb.btn-success(href="#/products", ng-click="addToShoppingList(quantity)") Add to List

@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
     ShoppingListProduct = mongoose.model('ShoppingListProduct');
 
 var shoppingListSchema = mongoose.Schema({
-    products: [ShoppingListProduct.schema],
+    products: [],
     dateCreated: { type: Date, default: Date.now },
     dateClosed: { type: Date }
 });

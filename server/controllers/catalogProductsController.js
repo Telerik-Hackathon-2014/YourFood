@@ -47,7 +47,7 @@ module.exports = {
         }
 
         if (req.query.orderByCategory) {
-            sortSettings["category"] = sortType;
+            sortSettings["categoryName"] = sortType;
         }
 
         if (req.query.orderByLifeTime) {
