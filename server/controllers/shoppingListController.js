@@ -36,38 +36,50 @@ module.exports = {
         });
     },
     closeShoppingList: function (req, res) {
-        var userId = req.params.id;
+        var userId = req.body.id;
 
         User.findById(userId).exec(function (err, user) {
             if (err) {
-                console.log('Could ')
+                console.log('Could not find user for shopping list modification: ' + err)
             }
 
-            ShoppingList.findById(user.shoppingList).exec(function (err, userList) {
-                if (err) {
-                    console.log('Could not find the users list in the Db: ' + err);
+            ShoppingList.findByIdAndUpdate(
+                user.shoppingList,
+                {$set: {
+                    "dateClosed": new Date()
+                }},
+                {safe: true, upsert: true},
+                function (err, list) {
+                    if (err) {
+                        console.log('Could not update or find user for shoplist modifications: ' + err);
+                    }
+
+                    ShoppingList.create({dateCreated: new Date(), products: []},
+                        function (err, newList) {
+                            if (err) {
+                                console.log('Shop list for user not created: ' + err);
+                            }
+
+                            user.shoppingList = newList._id;
+                            user.shoppingListsHistory.push(list._id);
+
+                            for (var i = 0; i < list.products.length; i += 1) {
+                                user.availableProducts.push(list.products[i]);
+                            }
+
+                            user.save(function (err, user) {
+                                if (err) {
+                                    console.log('Could not save user changes in shopping list: ' + err);
+                                }
+                            });
+
+                            res.send(list);
+                            res.end();
+                        });
                 }
-
-
-            })
+            );
         });
 
-        ShoppingList.findByIdAndUpdate(
-            listId,
-            {$set: {
-                "products": [],
-                "dateClosed": Date.now()
-            }},
-            {safe: true, upsert: true},
-            function (err, list) {
-                if (err) {
-                    console.log(err);
-                }
-
-                res.send(list);
-                res.end();
-            }
-        );
     },
     addProductToShoppingList: function (req, res) {
         var newProductData = new ShoppingListProduct(req.body),

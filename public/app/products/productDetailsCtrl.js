@@ -31,6 +31,8 @@ app.controller('ProductDetailsCtrl', function ($scope, $routeParams, $location, 
     $scope.addToFridge = function (quantity) {
         $scope.product.quantity = quantity;
 
-
+        productsData.addProductToFridge(identity.currentUser()._id, $scope.product, function() {
+            notifier.success('Product added to fridge');
+        });
     };
 });

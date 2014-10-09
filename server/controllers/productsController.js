@@ -1,4 +1,7 @@
-var Product = require('mongoose').model('Product');
+var mongoose = require('mongoose'),
+    Product = mongoose.model('Product'),
+    User = mongoose.model('User'),
+    CatalogProduct = mongoose.model('CatalogProduct');
 
 module.exports = {
     createProduct: function (req, res, next) {
@@ -60,7 +63,25 @@ module.exports = {
     },
     addProductToFridge: function(req, res) {
         var productToAdd = req.body;
+        var userId = req.params.id;
 
-        
+        User.findById(userId, function(err, user) {
+            if(err) {
+                console.log('Could not find user: ' + err);
+                return;
+            }
+
+            Product.create(productToAdd, function(err, product) {
+                if(err) {
+                    console.log('Could not find catalog product: ' + err);
+                    return;
+                }
+
+                user.availableProducts.push(product._id);
+
+                res.send(product);
+                res.end();
+            });
+        });
     }
 };
