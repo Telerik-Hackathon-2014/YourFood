@@ -1,4 +1,9 @@
-app.controller('CreateCatalogProductController', function ($scope, $routeParams, $location, notifier, auth, YourFoodService, EverliveService) {
+app.controller('CreateCatalogProductController', function ($scope, $routeParams, $location, notifier, auth, YourFoodService, EverliveService, identity) {
+    if(!identity.isAuthenticated()) {
+        $location.path('/');
+        return;
+    }
+
     var categories = {};
 
     YourFoodService.getProductCategoryNames()
