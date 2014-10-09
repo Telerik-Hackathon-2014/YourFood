@@ -49,12 +49,6 @@ app.controller('ProductsController', function ($scope, identity, productsData) {
     if (identity.isAuthenticated()) {
         productsData.getAvailableProducts(identity.currentUser()._id, function (availableProducts) {
             $scope.availableProducts = availableProducts;
-
-            for (var i = 0; i < availableProducts.length; i += 1) {
-                var diff = Math.abs(new Date() - availableProducts[i].dateCreated);
-                var daysOfFreshnessLeft = Math.floor(diff / MS_PER_DAY);
-                console.log(daysOfFreshnessLeft);
-            }
         });
     }
 
