@@ -64,7 +64,16 @@ module.exports = {
                             user.shoppingListsHistory.push(list._id);
 
                             for (var i = 0; i < list.products.length; i += 1) {
-                                user.availableProducts.push(list.products[i]);
+
+                                var productToAddInfo = {
+                                    name: list.products[i].name,
+                                    image: list.products[i].image,
+                                    categoryName: list.products[i].categoryName,
+                                    categoryImage: list.products[i].categoryImage,
+                                    quantity: list.products[i].quantity
+                                };
+
+                                user.availableProducts.push(productToAddInfo);
                             }
 
                             user.save(function (err, user) {
@@ -73,7 +82,7 @@ module.exports = {
                                 }
                             });
 
-                            res.send(list);
+                            res.send(user);
                             res.end();
                         });
                 }

@@ -32,8 +32,8 @@ app.factory('shoppingListData',
                         notifier.error('Product already in list')
                     })
             },
-            addListToFridge: function (id,success) {
-                $http.put(shoppingListApi + '/' + id)
+            addListToFridge: function (id, user, success) {
+                $http.put(shoppingListApi + '/' + id, user)
                     .success(function (data) {
                         success(data);
                     })
