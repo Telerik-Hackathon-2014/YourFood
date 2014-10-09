@@ -62,7 +62,7 @@ module.exports = {
         });
     },
     addProductToFridge: function(req, res) {
-        var productToAdd = req.body;
+        var catalogProductInfo = req.body;
         var userId = req.params.id;
 
         User.findById(userId, function(err, user) {
@@ -71,13 +71,26 @@ module.exports = {
                 return;
             }
 
-            Product.create(productToAdd, function(err, product) {
+            var productToAddInfo = {
+                name: catalogProductInfo.name,
+                image: catalogProductInfo.image,
+                categoryName: catalogProductInfo.categoryName,
+                categoryImage: catalogProductInfo.categoryImage,
+                quantity: catalogProductInfo.quantity
+            };
+
+            Product.create(productToAddInfo, function(err, product) {
                 if(err) {
                     console.log('Could not find catalog product: ' + err);
                     return;
                 }
 
-                user.availableProducts.push(product._id);
+                user.availableProducts.push(product);
+                user.save(function(err) {
+                    if(err) {
+                        console.log('Could not update user after entering product to fridge: ' + err);
+                    }
+                });
 
                 res.send(product);
                 res.end();

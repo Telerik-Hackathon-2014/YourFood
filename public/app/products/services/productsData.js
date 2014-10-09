@@ -47,6 +47,9 @@ app.factory('productsData',
                     .error(function (err) {
                         notifier.error('Could not add product to fridge: ' + err);
                     })
+            },
+            getAvailableProducts: function() {
+                $http.get()
             }
         }
     });

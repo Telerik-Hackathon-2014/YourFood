@@ -45,5 +45,7 @@ app.controller('ProductsController', function ($scope, identity, productsData) {
         getProducts();
     };
 
+
+
     getProducts();
 });
