@@ -4,10 +4,10 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     passport = require('passport'),
-    morgan = require('morgan'),
+//    morgan = require('morgan'),
     fs = require('fs');
 
-var logStream = fs.createWriteStream(__dirname + './../logs/errors.log', {flags: 'a'});
+//var logStream = fs.createWriteStream(__dirname + './../logs/errors.log', {flags: 'a'});
 
 module.exports = function(app, config){
     app.set('view engine', 'jade');
