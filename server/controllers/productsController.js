@@ -28,12 +28,14 @@ module.exports = {
         }
     },
     getAllProducts: function (req, res) {
-        Product.find({}).exec(function (err, collection) {
-            if (err) {
-                console.log('Trying to get all products did not work out: ' + err);
+        User.findById(req.params.id, function(err, user) {
+            if(err) {
+                console.log('Could not get user: ' + err);
+                return;
             }
 
-            res.send(collection);
+            res.send(user.availableProducts);
+            res.end();
         });
     },
     removeProduct: function (req, res) {
@@ -97,4 +99,5 @@ module.exports = {
             });
         });
     }
+
 };

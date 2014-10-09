@@ -25,6 +25,7 @@ module.exports = function (app) {
     app.post('/api/users', controllers.users.createUser);
     app.put('/api/users', auth.isAuthenticated, controllers.users.updateUserInformation);
 
+    app.get('/api/products/:id', auth.isAuthenticated, controllers.products.getAllProducts);
     app.post('/api/products', auth.isAuthenticated, controllers.products.createProduct);
     app.put('/api/products', auth.isAuthenticated, controllers.products.updateProduct);
     app.delete('/api/products', auth.isAuthenticated, controllers.products.updateProduct);

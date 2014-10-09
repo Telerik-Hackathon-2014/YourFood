@@ -3,27 +3,30 @@
         form.form-horizontal(name="createRecipeForm", method="POST", enctype='multipart/form-data')
             fieldset
                 legend Create a new recipe
-                .form-group
-                    label.col-md-2.control-label(for="name") Name
-                    .col-md-10
-                        input.form-control(type="text", placeholder="Recipe name", ng-model="recipe.name", required)
-                .form-group
-                    label.col-md-2.control-label(for="category") Category
-                    .col-md-10
-                        select.form-control(ng-model="recipe.category")
-                            option(ng-repeat="(key, value) in categories") {{ key }}
-                .form-group
-                    label.col-md-2.control-label(for="picture") Picture
-                    .col-md-10
-                        input.form-control(type="file", placeholder="Picture", fileread="recipe.picture", required)
-                .form-group
-                    label.col-md-2.control-label(for="description") Description
-                    .col-md-10
-                        input.form-control(type="text", placeholder="Description", ng-model="recipe.description", required)
-                .form-group
-                    label.col-md-2.control-label(for="lifetime") Time
-                    .col-md-10
-                        input.form-control(type="text", placeholder="Time", ng-model="recipe.time", required)
-                .pull-right.create-vote-btn-container
-                    button.btn.btn-primary(ng-click="createRecipe(recipe)", ng-disabled="createRecipeForm.$invalid || !recipe.picture") Create
-                    a.btn.btn-primary(href="#/") Cancel
+                .col-md-7
+                    .form-group
+                        label.col-md-2.control-label(for="name") Name
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Recipe name", ng-model="recipe.name", required)
+                    .form-group
+                        label.col-md-2.control-label(for="category") Category
+                        .col-md-10
+                            select.form-control(ng-model="recipe.category")
+                                option(ng-repeat="(key, value) in categories") {{ key }}
+                    .form-group
+                        label.col-md-2.control-label(for="picture") Picture
+                        .col-md-10
+                            input.form-control(type="file", placeholder="Picture", fileread="recipe.picture", required)
+                    .form-group
+                        label.col-md-2.control-label(for="description") Description
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Description", ng-model="recipe.description", required)
+                    .form-group
+                        label.col-md-2.control-label(for="lifetime") Time
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Time", ng-model="recipe.time", required)
+                    .pull-right.create-vote-btn-container
+                        button.btn.btn-primary(ng-click="createRecipe(recipe)", ng-disabled="createRecipeForm.$invalid || !recipe.picture") Create
+                        a.btn.btn-primary(href="#/") Cancel
+                .col-md-5.image-container
+                    img(ng-src="{{recipe.picture}}")
