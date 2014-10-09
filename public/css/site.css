@@ -98,3 +98,60 @@ ul {
 .dropdown-menu {
   min-width: 230px;
 }
+.home-page {
+  margin-top: -180px;
+  height: 3000px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-image: url("../images/background/background.png") !important;
+}
+#home-page-login {
+  display: block;
+  margin: 0 auto;
+  margin-top: 585px;
+  background-image: url("../images/background/login.png") !important;
+  width: 202px;
+  height: 37px;
+  border: 0;
+  border-radius: 18px;
+  box-shadow: 0px 3px 5px #000;
+}
+#home-page-register {
+  display: block;
+  margin: 0 auto;
+  margin-top: 11px;
+  background-image: url("../images/background/register.png") !important;
+  width: 202px;
+  height: 37px;
+  border: 0;
+  border-radius: 18px;
+  box-shadow: 0px 3px 5px #000;
+}
+#home-page-learn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 249px;
+  background-image: url("../images/background/learn.png") !important;
+  width: 162px;
+  height: 81px;
+  border: 0;
+  border-top-left-radius: 125px;
+  border-top-right-radius: 125px;
+  box-shadow: 0px -3px 5px #000;
+}
+#home-page-join-us {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1800px;
+  background-image: url("../images/background/join-us.png") !important;
+  width: 202px;
+  height: 37px;
+  border: 0;
+  border-radius: 18px;
+  box-shadow: 0px 3px 5px #000;
+}
+#home-page-learn-container {
+  height: 0;
+  margin: 0;
+}

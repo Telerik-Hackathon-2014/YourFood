@@ -1,14 +1,19 @@
-.container
-    .panel.panel-primary
-        .panel-heading.text-center
-            h1
-                | YourFood Hackathon
-        .panel-body
-            div(ng-controller="MainCtrl")
-                div(style="height: 300px")
-                    carousel(interval="interval")
-                        slide(ng-repeat="product in products", active="product.active")
-                            img(ng-src="{{product.image}}", style="margin:auto;")
-                            div(class="carousel-caption")
-                                h4 {{ product.name }}
-                                h6 {{product.category}}
+.container.home-page
+    a#home-page-login(href="#/login")
+    a#home-page-register(href="#/signup")
+    button#home-page-learn(ng-click="scrollToLearn()")
+    div#home-page-learn-container
+    a#home-page-join-us(href="#/login")
+    //.panel.panel-primary
+    //    .panel-heading.text-center
+    //        h1
+    //            | YourFood Hackathon
+    //    .panel-body
+    //        div(ng-controller="MainCtrl")
+    //            div(style="height: 300px")
+    //                carousel(interval="interval")
+    //                    slide(ng-repeat="product in products", active="product.active")
+    //                        img(ng-src="{{product.image}}", style="margin:auto;")
+    //                        div(class="carousel-caption")
+    //                            h4 {{ product.name }}
+    //                            h6 {{product.category}}
