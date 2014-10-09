@@ -12,7 +12,7 @@ var logStream = fs.createWriteStream(__dirname + './../logs/errors.log', {flags:
 module.exports = function(app, config){
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');
-    app.use(morgan('combined', {stream: logStream, skip: function (req, res) { return res.statusCode < 400 }}));
+//    app.use(morgan('combined', {stream: logStream, skip: function (req, res) { return res.statusCode < 400 }}));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
         extended: true
