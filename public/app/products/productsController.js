@@ -17,10 +17,10 @@ app.controller('ProductsController', function ($scope, identity, productsData) {
     }
 
     $scope.nextPage = function () {
-        if (!$scope.recipes) {
+        if (!$scope.catalogProducts) {
             return;
         }
-        if ($scope.recipes.length < 10) {
+        if ($scope.catalogProducts.length < 10) {
             return;
         }
 
