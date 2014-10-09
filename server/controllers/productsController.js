@@ -87,7 +87,9 @@ module.exports = {
 
                 user.availableProducts.push(product);
                 user.save(function(err) {
-                    console.log('Could not update user after entering product to fridge: ' + err);
+                    if(err) {
+                        console.log('Could not update user after entering product to fridge: ' + err);
+                    }
                 });
 
                 res.send(product);
