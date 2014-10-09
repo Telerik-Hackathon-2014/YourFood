@@ -1,4 +1,7 @@
-var Product = require('mongoose').model('Product');
+var mongoose = require('mongoose'),
+    Product = mongoose.model('Product'),
+    User = mongoose.model('User'),
+    CatalogProduct = mongoose.model('CatalogProduct');
 
 module.exports = {
     createProduct: function (req, res, next) {
@@ -59,8 +62,39 @@ module.exports = {
         });
     },
     addProductToFridge: function(req, res) {
-        var productToAdd = req.body;
+        var catalogProductInfo = req.body;
+        var userId = req.params.id;
 
-        
+        User.findById(userId, function(err, user) {
+            if(err) {
+                console.log('Could not find user: ' + err);
+                return;
+            }
+
+            var productToAddInfo = {
+                name: catalogProductInfo.name,
+                image: catalogProductInfo.image,
+                categoryName: catalogProductInfo.categoryName,
+                categoryImage: catalogProductInfo.categoryImage,
+                quantity: catalogProductInfo.quantity
+            };
+
+            Product.create(productToAddInfo, function(err, product) {
+                if(err) {
+                    console.log('Could not find catalog product: ' + err);
+                    return;
+                }
+
+                user.availableProducts.push(product);
+                user.save(function(err) {
+                    if(err) {
+                        console.log('Could not update user after entering product to fridge: ' + err);
+                    }
+                });
+
+                res.send(product);
+                res.end();
+            });
+        });
     }
 };

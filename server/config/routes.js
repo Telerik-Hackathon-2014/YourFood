@@ -29,6 +29,8 @@ module.exports = function (app) {
     app.put('/api/products', auth.isAuthenticated, controllers.products.updateProduct);
     app.delete('/api/products', auth.isAuthenticated, controllers.products.updateProduct);
 
+    app.post('/api/products/add-to-fridge/:id', auth.isAuthenticated, controllers.products.addProductToFridge);
+
     app.get('/api/catalog-products/:id', auth.isAuthenticated, controllers.catalogProducts.getCatalogProductById);
 
     app.get('/api/recipes/:id', auth.isAuthenticated, controllers.recipes.getRecipeById);

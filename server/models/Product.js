@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     Category = mongoose.model('Category');
 
 var productSchema = mongoose.Schema({
-    name: { type: String, required: true, unique: true },
+    name: { type: String, required: true },
     image: { type: String },
     categoryName: { type: String },
     categoryImage: { type: String },

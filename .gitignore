@@ -2,3 +2,5 @@
 node_modules
 lib/
 !*.css
+!*.log
+/server/logs

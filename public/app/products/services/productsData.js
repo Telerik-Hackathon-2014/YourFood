@@ -39,14 +39,17 @@ app.factory('productsData',
                         notifier.error('Could not get catalog product by id');
                     })
             },
-            addProductToFridge: function(id, success) {
-                $http.post(shoppingListApi + '/' + id, product)
+            addProductToFridge: function(id, product, success) {
+                $http.post('api/products/add-to-fridge/' + id, product)
                     .success(function (data) {
                         success(data);
                     })
                     .error(function (err) {
-                        notifier.error('Product already in list')
+                        notifier.error('Could not add product to fridge: ' + err);
                     })
+            },
+            getAvailableProducts: function() {
+                $http.get()
             }
         }
     });
