@@ -7,6 +7,8 @@ app.controller('ProductDetailsCtrl', function ($scope, $routeParams, identity, p
 
     $scope.productId = $routeParams.id;
 
+    $scope.quantity = 1000;
+
     productsData.getProductById($scope.productId,
         function (data) {
             $scope.product = data;
