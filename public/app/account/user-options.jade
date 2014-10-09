@@ -18,7 +18,7 @@
                         img.icon.pull-right(src="images/icons/categories.png")
                 li(ng-show="identity.isAdmin()")
                     a(href="#/admin/recipes/categories/create") Create Recipe Category
-                    li.divider
+                li.divider(ng-show="identity.isAdmin()")
                 li(ng-show="identity.isAdmin()")
                     a(href="#/admin/products/create") Create Catalog Product
                         img.icon.pull-right(src="images/icons/apple.png")
@@ -27,11 +27,11 @@
                         img.icon.pull-right(src="images/icons/products-categories.png")
                 li(ng-show="identity.isAdmin()")
                     a(href="#/admin/products/categories/create") Create Product Category
-                li.divider
+                li.divider(ng-show="identity.isAdmin()")
                 li(ng-show="identity.isAdmin()")
                     a(href="#/admin/users") Users
                         img.icon.pull-right(src="images/icons/users.png")
-                li.divider
+                li.divider(ng-show="identity.isAdmin()")
                 li(ng-show="identity.isAuthenticated()")
                     a(href="#/profile") Profile
                         img.icon.pull-right(src="images/icons/settings.png")
