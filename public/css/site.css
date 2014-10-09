@@ -92,3 +92,6 @@ ul {
   width: 100px;
   height: 100px;
 }
+.quantity-slider input {
+  cursor: pointer;
+}

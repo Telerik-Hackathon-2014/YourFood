@@ -7,7 +7,7 @@ app.factory('notifier', function(toastr){
             // toastr.warning(msg);
         },
         error: function(msg){
-          //  toastr.error(msg);
+            toastr.error(msg);
         }
     }
 });
