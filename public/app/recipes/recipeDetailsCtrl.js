@@ -1,7 +1,12 @@
 'use strict';
 
 app.controller('RecipeDetailsCtrl',
-    function ($scope, $routeParams, recipesData, identity) {
+    function ($scope, $routeParams, $location, recipesData, identity) {
+        if(!identity.isAuthenticated()) {
+            $location.path('/login');
+            return;
+        }
+
         $scope.isLogged = identity.isAuthenticated();
 
         $scope.recipeId = $routeParams.id;

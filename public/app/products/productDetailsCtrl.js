@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProductDetailsCtrl', function ($scope, $routeParams, identity, productsData, notifier, shoppingListData) {
+app.controller('ProductDetailsCtrl', function ($scope, $routeParams, $location, identity, productsData, notifier, shoppingListData) {
     if(!identity.isAuthenticated()) {
         $location.path('/login');
         return;
