@@ -38,6 +38,15 @@ app.factory('productsData',
                     .error(function (err) {
                         notifier.error('Could not get catalog product by id');
                     })
+            },
+            addProductToFridge: function(id, success) {
+                $http.post(shoppingListApi + '/' + id, product)
+                    .success(function (data) {
+                        success(data);
+                    })
+                    .error(function (err) {
+                        notifier.error('Product already in list')
+                    })
             }
         }
     });
