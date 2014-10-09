@@ -78,7 +78,8 @@ module.exports = {
                 image: catalogProductInfo.image,
                 categoryName: catalogProductInfo.categoryName,
                 categoryImage: catalogProductInfo.categoryImage,
-                quantity: catalogProductInfo.quantity
+                quantity: catalogProductInfo.quantity,
+                lifetime: catalogProductInfo.lifetime
             };
 
             Product.create(productToAddInfo, function(err, product) {

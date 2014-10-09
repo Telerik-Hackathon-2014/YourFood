@@ -72,7 +72,7 @@ module.exports = {
                                     categoryName: list.products[i].categoryName,
                                     categoryImage: list.products[i].categoryImage,
                                     quantity: list.products[i].quantity,
-
+                                    lifetime: list.products[i].lifetime
                                 };
 
                                 Product.create(productToAddInfo, function (err, product) {

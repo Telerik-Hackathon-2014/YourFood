@@ -1,7 +1,7 @@
 'use strict';
 
 app.controller('ProductsController', function ($scope, identity, productsData) {
-    var MS_PER_DAY = 1000 * 60 * 60 * 24;
+    var one_day = 1000 * 60 * 60 * 24;
     $scope.identity = identity;
     $scope.isLogged = identity.isAuthenticated();
     $scope.filter = {};
@@ -49,6 +49,18 @@ app.controller('ProductsController', function ($scope, identity, productsData) {
     if (identity.isAuthenticated()) {
         productsData.getAvailableProducts(identity.currentUser()._id, function (availableProducts) {
             $scope.availableProducts = availableProducts;
+
+            for (var i = 0; i < availableProducts.length; i += 1) {
+                var purchaseDate = new Date(availableProducts[i].purchaseDate);
+                var currentTime = new Date();
+
+                // Calculate the difference in milliseconds
+                var timeDiff = currentTime.getTime() - purchaseDate.getTime();
+
+                // Convert back to days and return
+                var freshness = availableProducts[i].lifetime - Math.round(timeDiff / one_day);
+                $scope.availableProducts[i].freshness = freshness;
+            }
         });
     }
 
