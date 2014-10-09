@@ -13,3 +13,4 @@
 127.0.0.1 - - [Thu, 09 Oct 2014 14:50:51 GMT] "GET /%7B%7Bproduct.image%7D%7D HTTP/1.1" 500 2521 "http://localhost:3030/" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.101 Safari/537.36"
 127.0.0.1 - - [Thu, 09 Oct 2014 14:50:51 GMT] "GET /favicon.ico HTTP/1.1" 500 2521 "-" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.101 Safari/537.36"
 127.0.0.1 - - [Thu, 09 Oct 2014 14:50:51 GMT] "GET /favicon.ico HTTP/1.1" 500 2521 "-" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.101 Safari/537.36"
+127.0.0.1 - - [Thu, 09 Oct 2014 16:12:10 GMT] "GET /partials/admin/recipes/create-recipe HTTP/1.1" 500 2386 "http://localhost:3030/" "Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.101 Safari/537.36"

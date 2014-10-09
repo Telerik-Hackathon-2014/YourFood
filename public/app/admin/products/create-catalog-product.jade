@@ -3,27 +3,30 @@
         form.form-horizontal(name="createCatalogProductForm", method="POST", enctype='multipart/form-data')
             fieldset
                 legend Create a new catalog product
-                .form-group
-                    label.col-md-2.control-label(for="name") Name
-                    .col-md-10
-                        input.form-control(type="text", placeholder="Product name", ng-model="catalogProduct.name", required)
-                .form-group
-                    label.col-md-2.control-label(for="category") Category
-                    .col-md-10
-                        select.form-control(ng-model="catalogProduct.category")
-                            option(ng-repeat="(key, value) in categories") {{ key }}
-                .form-group
-                    label.col-md-2.control-label(for="picture") Picture
-                    .col-md-10
-                        input.form-control(type="file", placeholder="Picture", fileread="catalogProduct.picture", required)
-                .form-group
-                    label.col-md-2.control-label(for="lifetime") Lifetime
-                    .col-md-10
-                        input.form-control(type="text", placeholder="Product lifetime", ng-model="catalogProduct.lifetime", required)
-                .form-group
-                    label.col-md-2.control-label(for="unit") Unit(s)
-                    .col-md-10
-                        input.form-control(type="text", placeholder="Product unit(s)", ng-model="catalogProduct.unit", required)
-                .pull-right.create-vote-btn-container
-                    button.btn.btn-primary(ng-click="createCatalogProduct(catalogProduct)", ng-disabled="createCatalogProductForm.$invalid || !catalogProduct.picture") Create
-                    a.btn.btn-primary(href="#/") Cancel
+                .col-md-7
+                    .form-group
+                        label.col-md-2.control-label(for="name") Name
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Product name", ng-model="catalogProduct.name", required)
+                    .form-group
+                        label.col-md-2.control-label(for="category") Category
+                        .col-md-10
+                            select.form-control(ng-model="catalogProduct.category")
+                                option(ng-repeat="(key, value) in categories") {{ key }}
+                    .form-group
+                        label.col-md-2.control-label(for="picture") Picture
+                        .col-md-10
+                            input.form-control(type="file", placeholder="Picture", fileread="catalogProduct.picture", required)
+                    .form-group
+                        label.col-md-2.control-label(for="lifetime") Lifetime
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Product lifetime", ng-model="catalogProduct.lifetime", required)
+                    .form-group
+                        label.col-md-2.control-label(for="unit") Unit(s)
+                        .col-md-10
+                            input.form-control(type="text", placeholder="Product unit(s)", ng-model="catalogProduct.unit", required)
+                    .pull-right.create-vote-btn-container
+                        button.btn.btn-primary(ng-click="createCatalogProduct(catalogProduct)", ng-disabled="createCatalogProductForm.$invalid || !catalogProduct.picture") Create
+                        a.btn.btn-primary(href="#/") Cancel
+                .col-md-5.image-container
+                    img(ng-src="{{catalogProduct.picture}}")
