@@ -2,7 +2,7 @@
 
 app.controller('ShoppingListCtrl', function ($scope, $location, identity, shoppingListData) {
     if(!identity.isAuthenticated()) {
-        $location.path('/');
+        $location.path('/login');
         return;
     }
 

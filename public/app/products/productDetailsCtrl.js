@@ -1,6 +1,11 @@
 'use strict';
 
 app.controller('ProductDetailsCtrl', function ($scope, $routeParams, identity, productsData, notifier, shoppingListData) {
+    if(!identity.isAuthenticated()) {
+        $location.path('/login');
+        return;
+    }
+
     $scope.currentUserShoppingListId = identity.currentUser().shoppingList;
 
     $scope.isLogged = identity.isAuthenticated();
@@ -22,4 +27,10 @@ app.controller('ProductDetailsCtrl', function ($scope, $routeParams, identity, p
                 notifier.success('Product added to shopping list');
             });
     }
+
+    $scope.addToFridge = function (quantity) {
+        $scope.product.quantity = quantity;
+
+
+    };
 });
