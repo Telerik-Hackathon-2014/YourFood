@@ -45,8 +45,6 @@ module.exports = function (app) {
     app.get('/api/shopping-list/history/:id', auth.isAuthenticated, controllers.shoppingLists.getShoppingListsHistory);
 
     // Public rights
-    app.get('/api/products', controllers.products.getAllProducts);
-
     app.get('/api/catalog-products', controllers.catalogProducts.getAllCatalogProducts);
 
     app.get('/api/recipes', controllers.recipes.getAllRecipes);

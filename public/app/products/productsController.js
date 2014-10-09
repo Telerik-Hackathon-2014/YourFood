@@ -48,7 +48,6 @@ app.controller('ProductsController', function ($scope, identity, productsData) {
     if (identity.isAuthenticated()) {
         productsData.getAvailableProducts(identity.currentUser()._id, function(availableProducts) {
             $scope.availableProducts = availableProducts;
-            console.log(availableProducts);
         });
     }
 

@@ -15,7 +15,7 @@ var userSchema = mongoose.Schema({
     hashPass: String,
     roles: [String],
     shoppingList: mongoose.Schema.Types.ObjectId,
-    availableProducts: [],
+    availableProducts: {type: [], default: []},
     shoppingListsHistory: [mongoose.Schema.Types.ObjectId],
     productsHistory: [mongoose.Schema.Types.ObjectId]
 });
@@ -44,7 +44,7 @@ module.exports.seedInitialUsers = function () {
                 }
                 salt = encryption.generateSalt();
                 hashedPwd = encryption.generateHashedPassword(salt, 'yasen');
-                User.create({username: 'yasen', firstName: 'Yasen', lastName: 'Mihaylov', email: 'yasen@yasen.com', salt: salt, hashPass: hashedPwd, roles: ['admin'], shoppingList: list._id});
+                User.create({username: 'yasen', firstName: 'Yasen', lastName: 'Mihaylov', email: 'yasen@yasen.com', salt: salt, hashPass: hashedPwd, roles: ['admin'], shoppingList: list._id, availableProducts:[]});
             });
 
             ShoppingList.create({dateCreated: new Date(), products: []}, function (err, list) {

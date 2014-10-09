@@ -32,7 +32,7 @@ app.factory('productsData',
                     });
             },
             getProductById: function (id, success) {
-                $http.get(productsApi + '/' + id)
+                $http.get(catalogProductsApi + '/' + id)
                     .success(function (data) {
                         success(data);
                     })

@@ -1,7 +1,8 @@
 var mongoose = require('mongoose'),
     ShoppingList = mongoose.model('ShoppingList'),
     User = mongoose.model('User'),
-    ShoppingListProduct = mongoose.model('ShoppingListProduct');
+    ShoppingListProduct = mongoose.model('ShoppingListProduct'),
+    Product = mongoose.model('Product');
 
 module.exports = {
     createShoppingList: function (req, res) {
@@ -70,17 +71,25 @@ module.exports = {
                                     image: list.products[i].image,
                                     categoryName: list.products[i].categoryName,
                                     categoryImage: list.products[i].categoryImage,
-                                    quantity: list.products[i].quantity
+                                    quantity: list.products[i].quantity,
+
                                 };
 
-                                user.availableProducts.push(productToAddInfo);
+                                Product.create(productToAddInfo, function (err, product) {
+                                    if (err) {
+                                        console.log('Product not created for fridge transfer: ' + err);
+                                        return;
+                                    }
+                                    console.log(product);
+                                    user.availableProducts.push(product);
+                                    user.save(function (err, user) {
+                                        if (err) {
+                                            console.log('Could not save user changes in shopping list: ' + err);
+                                        }
+                                    });
+                                });
                             }
 
-                            user.save(function (err, user) {
-                                if (err) {
-                                    console.log('Could not save user changes in shopping list: ' + err);
-                                }
-                            });
 
                             res.send(user);
                             res.end();
