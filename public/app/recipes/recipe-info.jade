@@ -13,8 +13,6 @@
                 br
                 h4
                     | Ingredients:
-                    a.btn.btn-danger.pull-right(ng-click="showProducts = !showProducts")
-                        | Show
                 div(ng-show="showProducts")
                     h5(ng-repeat="product in recipe.products") {{product.quantity}} gr. {{product.name}}
         .row
