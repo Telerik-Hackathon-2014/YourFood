@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('ProductDetailsCtrl', function ($scope, $routeParams, identity, productsData, notifier, shoppingListData) {
+app.controller('ProductDetailsCtrl', function ($scope, $routeParams, $location, identity, productsData, notifier, shoppingListData) {
     if(!identity.isAuthenticated()) {
         $location.path('/login');
         return;
@@ -11,6 +11,8 @@ app.controller('ProductDetailsCtrl', function ($scope, $routeParams, identity, p
     $scope.isLogged = identity.isAuthenticated();
 
     $scope.productId = $routeParams.id;
+
+    $scope.quantity = 1000;
 
     productsData.getProductById($scope.productId,
         function (data) {

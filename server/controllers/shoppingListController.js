@@ -43,8 +43,6 @@ module.exports = {
                 console.log('Could not find user for shopping list modification: ' + err)
             }
 
-            console.log(user);
-            console.log('------------------------------');
             ShoppingList.findByIdAndUpdate(
                 user.shoppingList,
                 {$set: {
@@ -56,8 +54,6 @@ module.exports = {
                         console.log('Could not update or find user for shoplist modifications: ' + err);
                     }
 
-                    console.log(list.products);
-                    console.log('------------------------------');
                     ShoppingList.create({dateCreated: new Date(), products: []},
                         function (err, newList) {
                             if (err) {
@@ -68,7 +64,6 @@ module.exports = {
                             user.shoppingListsHistory.push(list._id);
 
                             for (var i = 0; i < list.products.length; i += 1) {
-                                console.log(list.products[i]);
                                 user.availableProducts.push(list.products[i]);
                             }
 
