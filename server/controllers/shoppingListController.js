@@ -1,5 +1,7 @@
-var ShoppingList = require('mongoose').model('ShoppingList'),
-    User = require('mongoose').model('User');
+var mongoose = require('mongoose'),
+    ShoppingList = mongoose.model('ShoppingList'),
+    User = mongoose.model('User'),
+    ShoppingListProduct = mongoose.model('ShoppingListProduct');
 
 module.exports = {
     createShoppingList: function (req, res) {
@@ -18,7 +20,7 @@ module.exports = {
     getShoppingListsHistory: function (req, res) {
         var userId = req.params.id;
 
-        User.findById({_id: userId}, function(user) {
+        User.findById({_id: userId}, function (user) {
             ShoppingList.find({})
                 .where('_id')
                 .in(user.shoppingListsHistory)
@@ -34,8 +36,8 @@ module.exports = {
     },
     getShoppingList: function (req, res) {
         var shoppingListId = req.params.id;
-        ShoppingList.findOne({_id: shoppingListId}).exec(function(err, list) {
-            if(err) {
+        ShoppingList.findOne({_id: shoppingListId}).exec(function (err, list) {
+            if (err) {
                 console.log('Trying to get shopping list did not work out: ' + err);
             }
 
@@ -43,25 +45,29 @@ module.exports = {
             res.end();
         });
     },
-    addProductToShoppingList: function(req, res) {
-        var data = req.body;
+    addProductToShoppingList: function (req, res) {
+        var newProductData = new ShoppingListProduct(req.body),
+            listId = req.params.id;
 
-        ShoppingList.findOne({_id: data.id}).exec(function(err, list) {
-            if(err) {
-                console.log('Trying to get shopping list did not work out: ' + err);
+        ShoppingList.findByIdAndUpdate(
+            listId,
+            {$push: {"products": newProductData}},
+            {safe: true, upsert: true},
+            function(err, list) {
+                if (err){
+                    console.log(err);
+                }
+
+                res.send(list);
+                res.end();
             }
-
-            list.products.push(data.productId);
-
-            res.send(list);
-            res.end();
-        });
+        );
     },
-    removeProductFromShoppingList: function(req, res) {
+    removeProductFromShoppingList: function (req, res) {
         var data = req.body;
 
-        ShoppingList.findOne({_id: data.id}).exec(function(err, list) {
-            if(err) {
+        ShoppingList.findOne({_id: data.id}).exec(function (err, list) {
+            if (err) {
                 console.log('Trying to get shopping list did not work out: ' + err);
             }
 

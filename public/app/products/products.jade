@@ -2,12 +2,13 @@
     .row(ng-show="isLogged")
         .col-md-8
             .row
-                #cat-product.jumbotron.col-md-3.text-center.col-product(ng-repeat="product in catalogProducts", heigth="100%")
+                #cat-product.col-md-2.col-product(ng-repeat="product in catalogProducts")
+
                     a(href="#/products/{{product._id}}")
                         .row
                             .image-container.col-md-12
-                                img(src="{{product.image}}", alt="no picture")
-                        .row
+                                img.ct-product-image.img-thumbnail(src="{{product.image}}", alt="no picture")
+                        .row.text-center
                             .col-lg-12 {{product.name}}
         .col-md-4
             div

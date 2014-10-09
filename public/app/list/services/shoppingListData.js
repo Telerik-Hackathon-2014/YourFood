@@ -22,6 +22,15 @@ app.factory('shoppingListData',
                     .error(function (err) {
                         notifier.error('Could not get shopping list by id');
                     })
+            },
+            addProductToShoppingList: function (id, product, success) {
+                $http.post(shoppingListApi + '/' + id, product)
+                    .success(function (data) {
+                        success(data);
+                    })
+                    .error(function (err) {
+                        notifier.error('Product already in list')
+                    })
             }
         }
     });

@@ -12,7 +12,7 @@ body {
   margin-right: 5px;
 }
 .toast-top-right {
-  top: 70px;
+  top: 120px;
 }
 h2 {
   margin: 0;
@@ -88,7 +88,7 @@ span#page {
 ul {
   list-style-type: none;
 }
-#cat-product {
-  height: 250px;
-  width: 30%;
+.ct-product-image {
+  width: 100px;
+  height: 100px;
 }

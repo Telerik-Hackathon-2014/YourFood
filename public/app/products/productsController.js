@@ -16,7 +16,10 @@ app.controller('ProductsController', function ($scope, identity, productsData) {
     }
 
     $scope.nextPage = function () {
-        if ($scope.recipes.length < 10 || $scope.recipes == undefined) {
+        if (!$scope.recipes) {
+            return;
+        }
+        if ($scope.recipes.length < 10) {
             return;
         }
 
