@@ -2,11 +2,12 @@
 
 app.factory('productsData',
     function ($http, notifier) {
-        var productsApi = 'api/catalog-products';
+        var catalogProductsApi = 'api/catalog-products',
+            productsApi = 'api/products';
 
         return{
             getAllProducts: function (filter, success) {
-                var url = productsApi + '?page=' + (filter.page -1);
+                var url = catalogProductsApi + '?page=' + (filter.page -1);
 
                 if (filter.category) {
                     url += '&orderByCategory=true';
@@ -46,10 +47,16 @@ app.factory('productsData',
                     })
                     .error(function (err) {
                         notifier.error('Could not add product to fridge: ' + err);
-                    })
+                    });
             },
-            getAvailableProducts: function() {
-                $http.get()
+            getAvailableProducts: function(id, success) {
+                $http.get(productsApi + '/' + id)
+                    .success(function (availableProducts) {
+                        success(availableProducts);
+                    })
+                    .error(function (err) {
+                        notifier.error('Could not get available products: ' + err);
+                    });
             }
         }
     });
