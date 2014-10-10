@@ -2,8 +2,9 @@
 
 app.controller('RecipesCtrl',
     function ($scope, $routeParams, recipesData, identity) {
-
         $scope.isLogged = identity.isAuthenticated();
+
+        // Filter
         $scope.filter = {};
         $scope.filter.page = $scope.filter.page || 1;
         $scope.filter.sortType = $scope.filter.sortType || 'asc';
@@ -43,6 +44,16 @@ app.controller('RecipesCtrl',
         $scope.sort = function () {
             getRecipes();
         };
+
+        // Carousel
+        $scope.interval = 2500;
+        $scope.recipesCarousel = [];
+
+        recipesData.getAllRecipes(
+            $scope.filter,
+            function (data) {
+                $scope.recipesCarousel = data.slice(0, 3);
+            });
 
         getRecipes();
     });
