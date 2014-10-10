@@ -8,6 +8,7 @@ var shoppingListProductSchema = mongoose.Schema({
     categoryImage: { type: String },
     unit: {type: String},
     quantity: {type: Number},
+    lifetime: {type: Number},
     image: {type: String}
 });
 

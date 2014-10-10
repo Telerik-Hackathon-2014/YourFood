@@ -7,12 +7,16 @@
                 .panel-body
                     .row
                         #cat-product.col-md-2.col-product(ng-repeat="product in availableProducts")
-                            a(href="")
-                                .row
+                            .row
+                                a(href="")
                                     .image-container.col-md-12
                                         img.ct-product-image.img-thumbnail(src="{{product.image}}", alt="no picture")
                                     .row.text-center
                                         .col-lg-12 {{product.name}}
+                            .row.text-center.panel-content Expires in
+                                strong.panel-content
+                                    |  {{product.freshness}}
+                                |  days
             .panel.panel-success.content-background(ng-show="isLogged")
                 .panel-heading
                     .panel-title Catalog Products

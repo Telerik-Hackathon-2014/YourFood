@@ -20,9 +20,9 @@
                                 img.img-thumbnail(src="{{recipe.image}}")
                         .col-md-8
                             a(href="#/recipes/{{recipe._id}}")
-                                h4.recipes-content {{recipe.name}}
-                            h5.recipes-content Ingredients :
-                            h6.recipes-content(ng-repeat="product in recipe.products") {{product.quantity}} gr. {{product.name}}
+                                h4.panel-content {{recipe.name}}
+                            h5.panel-content Ingredients :
+                            h6.panel-content(ng-repeat="product in recipe.products") {{product.quantity}} gr. {{product.name}}
         .col-md-4
             div
                 div.panel.panel-default
