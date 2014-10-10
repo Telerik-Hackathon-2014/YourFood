@@ -51,7 +51,7 @@ $(document).ready(function () {
         toolbar: ["create"],
         columns: [
             { field: "name", title: "Recipe Category Name" },
-            { command: ["edit"], title: "&nbsp;", width: "100px" }
+            { command: ["edit"], title: "&nbsp;", width: "200px" }
         ],
         editable: "inline"
     });
