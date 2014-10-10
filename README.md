@@ -3,7 +3,7 @@
 ---
 
 # YourFood
-Food Management Application 
+Food Management Application <br/>
 Telerik Hackathon | October 17-19, 2014 Sofia, Bulgaria
 
 ## Contributors:
