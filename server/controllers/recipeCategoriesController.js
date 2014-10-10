@@ -41,7 +41,8 @@ module.exports = {
     getRecipeCategoryById: function (req, res) {
         RecipeCategory.findById(req.params.id, function (err, recipeCategory) {
             if (err) {
-                console.log('Recipe category looked by id could not be found: ' + err)
+                console.log('Recipe category looked by id could not be found: ' + err);
+                return;
             }
 
             res.send(recipeCategory);
@@ -50,6 +51,15 @@ module.exports = {
     },
     removeRecipeCategory: function (req, res) {
         RecipeCategory.findById(req.body._id, function (err, recipeCategory) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+
+            if (!recipeCategory) {
+                return;
+            }
+
             recipeCategory.remove(function (err) {
                 if (err) {
                     console.log('Recipe category could not be removed: ' + err);
