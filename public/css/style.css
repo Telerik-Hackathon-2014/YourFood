@@ -150,14 +150,16 @@ h2.subtitle {
 }
 
 /* slide */
+.carousel {
+    margin: 0;
+}
+
 .carousel-indicators {
   position: absolute;
-  bottom: -40px;
   left: 50%;
   z-index: 15;
   width: 60%;
   padding-left: 0;
-  margin-left: -50%;
   text-align: center;
   list-style: none;
 }
@@ -178,6 +180,19 @@ h2.subtitle {
   height: 12px;
   margin: 0;
   background-color: #b7cb1b;
+}
+
+.carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 250px;
+}
+
+.carousel-caption {
+    right: 20%;
+    left: 20%;
+    padding-bottom: 238px;
 }
 
 /* footer */

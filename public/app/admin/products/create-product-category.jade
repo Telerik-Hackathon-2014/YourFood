@@ -8,5 +8,5 @@
                     .col-md-10
                         input#category-name.form-control(type="text", placeholder="Name", ng-model="category.name", required)
                 .pull-right.create-vote-btn-container
-                    button.btn.btn-primary(ng-click="createCategory(category)", ng-disabled="createCategoryForm.$invalid") Create
+                    button.btn.btn-success(ng-click="createCategory(category)", ng-disabled="createCategoryForm.$invalid") Create
                     a.btn.btn-danger(href="#/") Cancel

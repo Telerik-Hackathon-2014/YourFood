@@ -1,18 +1,24 @@
 .container
-    div.row
-        div.ol-md-12
-            carousel(interval="interval")
-                slide(ng-repeat="recipeCarousel in recipesCarousel", active="recipeCarousel.active")
-                    img(ng-src="{{recipeCarousel.image}}", style="margin: 0 auto;")
-                    div(class="carousel-caption")
-                        h4 {{ recipeCarousel.name }}
-                        h6 {{ recipeCarousel.category}}
     .row
         .col-md-8
             .panel.panel-success.content-background
                 .panel-heading
                     .panel-title
                         | Recipes
+                .panel-body
+                    div.col-md-12(style="height: 250px")
+                        carousel.thumbnail(interval="interval")
+                            slide(ng-repeat="recipeCarousel in recipesCarousel", active="recipeCarousel.active")
+                                a(href="#/recipes/{{ recipeCarousel._id }}")
+                                    div(class="carousel-caption panel-content")
+                                        strong {{ recipeCarousel.name }}
+                                        br
+                                        span {{ recipeCarousel.categoryName }}
+                                    br
+                                    br
+                                    img.img-thumbnail(ng-src="{{recipeCarousel.image}}", style="margin: auto;")
+
+                br
                 .panel-body(ng-repeat="recipe in recipes")
                     .row
                         .col-md-4.image-container
@@ -27,25 +33,24 @@
             div
                 div.panel.panel-default
                     div.panel-heading
-                            ul.pager
-                                li.previous
-                                    a(ng-click="prevPage()", class="btn btn-default btn-sm")
-                                        span(class="glyphicon glyphicon glyphicon-chevron-left")
-                                        |&nbsp;
-                                        strong Previous
-                                li
-                                    strong
-                                        | Page:
-                                    span#page
-                                        | {{ filter.page }}
-                                li.next
-                                    a(ng-click="nextPage()", class="btn btn-default btn-sm")
-                                        strong Next&nbsp;
-                                        span(class="glyphicon glyphicon glyphicon-chevron-right")
-
-                p(ng-hide="true")
-                    button.btn.btn-default.btn-sm(ng-click="status.open = !status.open")
-                        | Toggle last panel
+                        ul.pager
+                            li.previous
+                                a(ng-click="prevPage()", class="btn btn-default btn-sm")
+                                    span(class="glyphicon glyphicon glyphicon-chevron-left")
+                                    | &nbsp;
+                                    strong Previous
+                            li
+                                strong
+                                    | Page:
+                                span#page
+                                    | {{ filter.page }}
+                            li.next
+                                a(ng-click="nextPage()", class="btn btn-default btn-sm")
+                                    strong Next&nbsp;
+                                    span(class="glyphicon glyphicon glyphicon-chevron-right")
+                    p(ng-hide="true")
+                        button.btn.btn-default.btn-sm(ng-click="status.open = !status.open")
+                            | Toggle last panel
                 accordion(close-others="oneAtATime")
                     accordion-group(is-open="status.open")
                         accordion-heading(ng-click="status.open = !status.open")
@@ -84,5 +89,3 @@
                                             option(value="desc") Descending
                             .list-group-item.active-list-item.text-center.pointer(ng-click="sort()")
                                 | Sort
-
-

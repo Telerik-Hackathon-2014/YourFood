@@ -1,6 +1,11 @@
 'use strict';
 
-app.controller('ProductsController', function ($scope, identity, productsData) {
+app.controller('ProductsController', function ($scope, $location, identity, productsData) {
+    if (!identity.isAuthenticated()) {
+        $location.path('/login');
+        return;
+    }
+
     var one_day = 1000 * 60 * 60 * 24;
     $scope.identity = identity;
     $scope.isLogged = identity.isAuthenticated();
@@ -39,7 +44,8 @@ app.controller('ProductsController', function ($scope, identity, productsData) {
 
     $scope.status = {
         isFirstOpen: true,
-        isFirstDisabled: false
+        isFirstDisabled: false,
+        open: true
     };
 
     $scope.sort = function () {

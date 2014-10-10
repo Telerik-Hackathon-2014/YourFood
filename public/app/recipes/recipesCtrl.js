@@ -1,7 +1,12 @@
 'use strict';
 
 app.controller('RecipesCtrl',
-    function ($scope, $routeParams, recipesData, identity) {
+    function ($scope, $routeParams,  $location, recipesData, identity) {
+        if (!identity.isAuthenticated()) {
+            $location.path('/login');
+            return;
+        }
+
         $scope.isLogged = identity.isAuthenticated();
 
         // Filter
@@ -38,7 +43,8 @@ app.controller('RecipesCtrl',
 
         $scope.status = {
             isFirstOpen: true,
-            isFirstDisabled: false
+            isFirstDisabled: false,
+            open: true
         };
 
         $scope.sort = function () {
@@ -52,7 +58,9 @@ app.controller('RecipesCtrl',
         recipesData.getAllRecipes(
             $scope.filter,
             function (data) {
-                $scope.recipesCarousel = data.slice(0, 3);
+                var index = Math.floor(Math.random() * (data.length - 4));
+                console.log(index);
+                $scope.recipesCarousel = data.slice(index, index + 3);
             });
 
         getRecipes();

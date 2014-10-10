@@ -26,7 +26,7 @@
                         .col-md-10
                             input.form-control(type="text", placeholder="Time", ng-model="recipe.time", required)
                     .pull-right.create-vote-btn-container
-                        button.btn.btn-primary(ng-click="createRecipe(recipe)", ng-disabled="createRecipeForm.$invalid || !recipe.picture") Create
+                        button.btn.btn-success(ng-click="createRecipe(recipe)", ng-disabled="createRecipeForm.$invalid || !recipe.picture") Create
                         a.btn.btn-danger(href="#/") Cancel
                 .col-md-5.image-container
                     img(ng-src="{{recipe.picture}}")
