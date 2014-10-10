@@ -27,6 +27,6 @@
                             input.form-control(type="text", placeholder="Product unit(s)", ng-model="catalogProduct.unit", required)
                     .pull-right.create-vote-btn-container
                         button.btn.btn-primary(ng-click="createCatalogProduct(catalogProduct)", ng-disabled="createCatalogProductForm.$invalid || !catalogProduct.picture") Create
-                        a.btn.btn-primary(href="#/") Cancel
+                        a.btn.btn-danger(href="#/") Cancel
                 .col-md-5.image-container
                     img(ng-src="{{catalogProduct.picture}}")

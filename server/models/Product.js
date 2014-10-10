@@ -8,6 +8,7 @@ var productSchema = mongoose.Schema({
     image: { type: String },
     categoryName: { type: String },
     categoryImage: { type: String },
+    lifetime: { type: Number},
     quantity: { type: Number },
     expirationDate: { type: Date },
     purchaseDate: {type: Date, default: Date.now }
