@@ -2,7 +2,7 @@
 
 app.factory('recipesData',
     function ($http, notifier) {
-        var recipesApi = 'api/recipes';
+        var recipesApi = 'http://yourfood.herokuapp.com/api/recipes';
 
         return {
             getAllRecipes: function (filters, success) {

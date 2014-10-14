@@ -4,6 +4,7 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     session = require('express-session'),
     passport = require('passport'),
+    cors = require('cors'),
 //    morgan = require('morgan'),
     fs = require('fs');
 
@@ -12,6 +13,7 @@ var express = require('express'),
 module.exports = function(app, config){
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');
+    app.use(cors);
 //    app.use(morgan('combined', {stream: logStream, skip: function (req, res) { return res.statusCode < 400 }}));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({

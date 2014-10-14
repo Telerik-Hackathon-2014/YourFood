@@ -2,7 +2,7 @@
 
 app.factory('productsData',
     function ($http, notifier) {
-        var catalogProductsApi = 'api/catalog-products',
+        var catalogProductsApi = 'http://yourfood.herokuapp.com/api/catalog-products',
             productsApi = 'api/products';
 
         return{
