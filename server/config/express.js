@@ -13,7 +13,7 @@ var express = require('express'),
 module.exports = function(app, config){
     app.set('view engine', 'jade');
     app.set('views', config.rootPath + '/server/views');
-    app.use(cors);
+    app.use(cors());
 //    app.use(morgan('combined', {stream: logStream, skip: function (req, res) { return res.statusCode < 400 }}));
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
