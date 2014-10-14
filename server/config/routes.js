@@ -25,16 +25,16 @@ module.exports = function (app) {
     app.post('/api/users', controllers.users.createUser);
     app.put('/api/users', auth.isAuthenticated, controllers.users.updateUserInformation);
 
-    app.get('/api/products/:id', auth.isAuthenticated, controllers.products.getAllProducts);
+    app.get('/api/products/:id', controllers.products.getAllProducts);
     app.post('/api/products', auth.isAuthenticated, controllers.products.createProduct);
     app.put('/api/products', auth.isAuthenticated, controllers.products.updateProduct);
     app.delete('/api/products', auth.isAuthenticated, controllers.products.updateProduct);
 
     app.post('/api/products/add-to-fridge/:id', auth.isAuthenticated, controllers.products.addProductToFridge);
 
-    app.get('/api/catalog-products/:id', auth.isAuthenticated, controllers.catalogProducts.getCatalogProductById);
+    app.get('/api/catalog-products/:id', controllers.catalogProducts.getCatalogProductById);
 
-    app.get('/api/recipes/:id', auth.isAuthenticated, controllers.recipes.getRecipeById);
+    app.get('/api/recipes/:id', controllers.recipes.getRecipeById);
 
     app.get('/api/admin/recipe-categories/:id', auth.isAuthenticated, controllers.recipeCategories.getRecipeCategoryById);
     app.get('/api/recipe-categories', controllers.recipeCategories.getAllRecipeCategories);
